@@ -30,39 +30,53 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <head>
 	<meta charset="UTF-8">
-	<title>Login</title>
+	<title>SignUp</title>
 
 	<style type="text/css">
+		/* override browser default */
+		html,
 		body {
-			font: 14px sans-serif;
+			margin: 0;
+			padding: 0;
 		}
 
-		.wrapper {
-			width: 350px;
-			padding: 20px;
+		/* use viewport-relative units to cover page fully */
+		body {
+			height: 100vh;
+			width: 100vw;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		.container {
+			width: 500px;
+			background-color: #e6ebe6;
 			margin: 0 auto;
+			padding: 5%;
+			box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 		}
 	</style>
 </head>
 
 <body>
-	<div class="wrapper">
-		<h1>BarterUp</h1>
-		<h2>Signup</h2>
+	<div class="container">
+		<h1>Welcome To BarterUp!</h1>
 		<p>Please fill this form to create an account.</p>
 
 		<form method="post">
-			<div class="form-group">
+			<div class="row">
 				<label for="Username">Username</label>
 				<input type="text" name="username" class="form-control">
 			</div>
 
-			<div class="form-group">
+			<div class="row">
 				<label for="Password">Password</label>
 				<input type="password" name="password" class="form-control">
 			</div>
 
-			<div class="form-group">
+			<div class="row">
 				<input type="submit" class="btn btn-primary" value="Submit">
 				<input type="reset" class="btn btn-default" value="Reset">
 			</div>

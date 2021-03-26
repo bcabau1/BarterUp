@@ -2,7 +2,7 @@
 
 session_start();
 
-include("connection.php");
+include("config.php");
 include("functions.php");
 
 
@@ -39,62 +39,48 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 ?>
 
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+	<meta charset="UTF-8">
 	<title>Login</title>
+
+	<style type="text/css">
+		body {
+			font: 14px sans-serif;
+		}
+
+		.wrapper {
+			width: 350px;
+			padding: 20px;
+			margin: 0 auto;
+		}
+	</style>
 </head>
 
 <body>
-
-	<style type="text/css">
-		#text {
-
-			height: 25px;
-			border-radius: 5px;
-			padding: 4px;
-			border: solid thin #aaa;
-			width: 100%;
-		}
-
-		#button {
-
-			padding: 10px;
-			width: 100px;
-			color: white;
-			background-color: lightblue;
-			border: none;
-		}
-
-		#box {
-
-			background-color: grey;
-			margin: auto;
-			width: 300px;
-			padding: 20px;
-		}
-	</style>
-
-	<div id="box">
+	<div class="wrapper">
+		<h1>BarterUp</h1>
+		<h2>Login</h2>
 
 		<form method="post">
-			<div style="font-size: 20px;margin: 10px;color: white;">Login</div>
-
-			<div class="container">
-				<label for="Username"> Username:</label>
-				<input id="text" type="text" name="username"><br><br>
+			<div class="form-group">
+				<label for="Username">Username</label>
+				<input type="text" name="username" class="form-control">
 			</div>
 
-			<div class="container">
-				<label for="Username"> Password:</label>
-				<input id="text" type="password" name="password"><br><br>
+			<div class="form-group">
+				<label for="Password">Password</label>
+				<input type="password" name="password" class="form-control">
 			</div>
 
-			<input id="button" type="submit" value="Login"><br><br>
+			<div class="form-group">
+				<input type="submit" class="btn btn-primary" value="Submit">
+				<input type="reset" class="btn btn-default" value="Reset">
+			</div>
 
-			<a href="signup.php">Click to Signup</a><br><br>
+			<p>Don't have an account? <a href="./signup.php">Signup here</a>.</p>>
 		</form>
 	</div>
 </body>

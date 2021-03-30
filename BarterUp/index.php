@@ -11,14 +11,18 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My website</title>
+	<title>BarterUp</title>
 </head>
 <body>
 
 	<a href="logout.php">Logout</a>
-	<h1>This is the index page</h1>
+	<h1>Home Page</h1>
 
 	<br>
 	Hello, <?php echo $user_data['username']; ?>
+	<br>
+	<div id="center_button">
+    <button onclick="location.href='inventory.php'">View Inventory</button>
+	</div>
 </body>
 </html>

@@ -38,6 +38,21 @@ session_start();
             Hello, <?php echo $user_data['username']; ?>
         </div>
 		<h1>Add to Inventory</h1>
+        <form method="post">
+			<div class="form-group">
+				<label for="Item">Item</label><br>
+				<input type="text" name="item_id" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="Category">Category</label><br>
+				<input type="text" name="category_name" class="form-control">
+			</div>
+            <div class="form-group">
+				<label for="Category">Description</label><br>
+				<textarea id="description" name="description" rows="4" cols="50">
+                </textarea>
+            </div>
+		</form>
         <div id="center_button">
             <button onclick="location.href='inventory.php'">Add</button>
         </div>

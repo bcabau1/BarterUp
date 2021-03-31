@@ -15,21 +15,33 @@ session_start();
         table, th, td {
         border-collapse: collapse;
         border: 1px solid black;
+        width: 100%;
         }
         table.center {
         margin-left: auto;
         margin-right: auto;
         }
+        body {
+			font: 14px sans-serif;
+		}
+        .wrapper {
+			width: 350px;
+			padding: 20px;
+			margin: 0 auto;
+		}
+        .welcome {
+            float: right;
+        }
     </style>
 </head>
 <body>
-
+<div class="wrapper">
 	<a href="index.php">Home Page</a>
-	<h1>Add to your inventory</h1>
+    <div class="welcome">
+    	Hello, <?php echo $user_data['username']; ?>
+    </div>
+	<h1>Inventory</h1>
 
-	<br>
-	Hello, <?php echo $user_data['username']; ?>
-	<br><br>
     <table>
         <tr>
             <th>Item</th>
@@ -38,20 +50,18 @@ session_start();
             <th>Item Condition</th>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>asdf </td>
+            <td> asdf</td>
+            <td> asdf</td>
+            <td> asdf</td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td> asdf</td>
+            <td> asdf</td>
+            <td>asdf </td>
+            <td> asdf</td>
         </tr>
     </table>
-	<div id="center_button">
-    <button onclick="location.href='inventory.php'">Add</button>
-	</div>
+    </div>
 </body>
 </html>

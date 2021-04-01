@@ -6,6 +6,8 @@ session_start();
 
 	$user_data = check_login($con);
 
+    #$sql = "insert into barterup.item values ();"
+	$showdiv = false;
 ?>
 
 <!DOCTYPE html>
@@ -40,13 +42,19 @@ session_start();
 		<h1>Add to Inventory</h1>
         <form method="post">
 			<div class="form-group">
+				<label for="Category">Category</label><br>
+				<select name="category" id="category">
+				<option value="movie">Movie</option>
+				<option value="music">Music</option>
+				<option value="video_game">Video Game</option>
+				<option value="misc">Miscellaneous</option>
+				</select>
+			</div>
+			<div class="form-group">
 				<label for="Item">Item</label><br>
 				<input type="text" name="item_id" class="form-control">
 			</div>
-			<div class="form-group">
-				<label for="Category">Category</label><br>
-				<input type="text" name="category_name" class="form-control">
-			</div>
+		
             <div class="form-group">
 				<label for="Category">Description</label><br>
 				<textarea id="description" name="description" rows="4" cols="50">

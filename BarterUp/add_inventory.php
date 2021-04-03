@@ -5,6 +5,53 @@ session_start();
 	include("functions.php");
 
 	$user_data = check_login($con);
+
+	if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+		if (isset($_POST['movie_submit']))	{
+			$movie_title = $_POST['title'];
+			$condition = $_POST['condition'];
+			$description = $_POST['description'];
+			if (!empty($movie_title) && !empty($condition) )	{
+				#$query = "insert into movie (title) values ('$movie_title')";
+				#mysqli_query($con, $query);
+				header("Location: add_inventory.php");
+				die;
+			}
+			else {
+				echo "Please enter some valid information!";
+			}
+		}
+		elseif (isset($_POST['music_submit']))	{
+			$album = $_POST['album'];
+			$artist = $_POST['artist'];
+			$condition = $_POST['condition'];
+			$description = $_POST['description'];
+			if (!empty($album) && !empty($artist) && !empty($condition)) {
+				#$query = "insert into user (username,password) values ('$username','$password')";
+				#mysqli_query($con, $query);
+				header("Location: add_inventory.php");
+				die;
+			}
+			else {
+				echo "Please enter some valid information!";
+			}
+		}
+		elseif (isset($_POST['vg_submit']))	{
+			$platform = $_POST['platform'];
+			$condition = $_POST['condition'];
+			$description = $_POST['description'];
+			if (!empty($platform) && !empty($condition)) {
+				#$query = "insert into user (username,password) values ('$username','$password')";
+				#mysqli_query($con, $query);
+				header("Location: add_inventory.php");
+				die;
+			}
+			else {
+				echo "Please enter some valid information!";
+			}
+		} 
+	}
 ?>
 
 
@@ -62,9 +109,10 @@ session_start();
 					<option value="videogame">Video Game</option>
 				</select>
 			</div>
+
 			<div id="movie" class="form-group">
 				<label for="Item">Movie Title</label><br>
-				<input type="text" name="item_id" class="form-control">
+				<input type="text" name="title" class="form-control">
 				<div id="misc" class="misc-group">
 				<label for="Condition">Condition</label><br>
 				<select name="condition" id="condition">
@@ -76,13 +124,15 @@ session_start();
 				<br><label for="Category">Description</label><br>
 				<textarea id="description" name="description" rows="4" cols="50">
                 </textarea>
+				<input type="submit" name="movie_submit" class="btn btn-primary" value="Add">
             </div>
             </div>
+
 			<div id="music" class="form-group">
 				<label for="Item">Album Name</label><br>
-				<input type="text" name="item_id" class="form-control"><br>
+				<input type="text" name="album" class="form-control"><br>
 				<label for="Item">Artist Name</label><br>
-				<input type="text" name="item_id" class="form-control">
+				<input type="text" name="artist" class="form-control">
 				<div id="misc" class="misc-group">
 				<label for="Condition">Condition</label><br>
 				<select name="condition" id="condition">
@@ -94,11 +144,13 @@ session_start();
 				<br><label for="Category">Description</label><br>
 				<textarea id="description" name="description" rows="4" cols="50">
                 </textarea>
+				<input type="submit" name="music_submit" class="btn btn-primary" value="Add">
             </div>
             </div>
+
 			<div id="videogame" class="form-group">
 				<label for="Item">Game Platform</label><br>
-				<input type="text" name="item_id" class="form-control">
+				<input type="text" name="platform" class="form-control">
 				<div id="misc" class="misc-group">
 				<label for="Condition">Condition</label><br>
 				<select name="condition" id="condition">
@@ -110,13 +162,12 @@ session_start();
 				<br><label for="Category">Description</label><br>
 				<textarea id="description" name="description" rows="4" cols="50">
                 </textarea>
+				<input type="submit" name ="vg_submit" class="btn btn-primary" value="Add">
             </div>
             </div>
 			
 		</form>
-        <div id="center_button">
-            <button onclick="location.href='inventory.php'">Add</button>
-        </div>
+        
 	</div>
 </body>
 </html>

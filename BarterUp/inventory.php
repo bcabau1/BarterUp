@@ -20,7 +20,6 @@ $user_data = check_login($con);
 
 <body>
     <?php include("./header.php"); ?>
-    <h1>Hello, <?php echo $user_data['username']; ?></h1>
     <div class="page_name">
         <h1>My Inventory</h1>
     </div>

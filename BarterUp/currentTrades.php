@@ -15,13 +15,14 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <title>Trades</title>
     <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="current_trades.css">
+    <link rel="stylesheet" href="currentTrades.css">
 </head>
 
 <body>
     <?php include("./header.php"); ?>
-    <h1>Hello, <?php echo $user_data['username']; ?></h1>
-    <div class="wrapper">
+    <div class="page_name">
+        <h1>All Current Trades</h1>
+    </div>
         <div class="links">
             <ul>
                 <li class="li-list active" data-view="list-view"> <i class="fas fa-list"></i>List View </li>
@@ -29,7 +30,7 @@ $user_data = check_login($con);
                 <li class="li-list" data-view="grid-view"><i class="fas fa-th-large"></i> Grid View </li>
             </ul>
         </div>
-
+        <div class="wrapper">
         <div class="view_main">
             <div class="view_wrap list-view" style="display:block;">
                 <div class="view_item">

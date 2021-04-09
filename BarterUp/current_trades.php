@@ -14,7 +14,7 @@ $user_data = check_login($con);
 <head>
     <meta charset="UTF-8">
     <title>Trades</title>
-    <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>">
+    <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="current_trades.css">
 </head>
 

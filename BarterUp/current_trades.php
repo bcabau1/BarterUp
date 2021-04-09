@@ -14,41 +14,95 @@ $user_data = check_login($con);
 <head>
     <meta charset="UTF-8">
     <title>Trades</title>
-
-    <style type="text/css">
-        /* override browser default */
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* use viewport-relative units to cover page fully */
-        body {
-            height: 100vh;
-            width: 100vw;
-            font: 14px sans-serif;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .container {
-            width: 500px;
-            background-color: #e6ebe6;
-            margin: 0 auto;
-            padding: 5%;
-            box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-        }
-    </style>
+    <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>">
+    <link rel="stylesheet" href="current_trades.css">
 </head>
 
 <body>
-    <?php include("./shared/header.php"); ?>
-    <div class="container">
-        <h1>Hello, <?php echo $user_data['username']; ?></h1>
+    <?php include("./header.php"); ?>
+    <h1>Hello, <?php echo $user_data['username']; ?></h1>
+    <div class="wrapper">
+        <div class="links">
+            <ul>
+                <li class="li-list active" data-view="list-view"> <i class="fas fa-list"></i>List View </li>
+
+                <li class="li-list" data-view="grid-view"><i class="fas fa-th-large"></i> Grid View </li>
+            </ul>
+        </div>
+
+        <div class="view_main">
+            <div class="view_wrap list-view" style="display:block;">
+                <div class="view_item">
+                    <div class="vi_left">
+                        <img src="./resources/profile-pic.png" alt="profile">
+                    </div>
+                    <div class="vi_right">
+                        <p class="title">Person</p>
+                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
+                        <div class="btn">View More</div>
+                    </div>
+                </div>
+                <div class="view_item">
+                    <div class="vi_left">
+                        <img src="./resources/profile-pic.png" alt="profile">
+                    </div>
+                    <div class="vi_right">
+                        <p class="title">Person</p>
+                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
+                        <div class="btn">View More</div>
+                    </div>
+                </div>
+                <div class="view_item">
+                    <div class="vi_left">
+                        <img src="./resources/profile-pic.png" alt="profile">
+                    </div>
+                    <div class="vi_right">
+                        <p class="title">Person</p>
+                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
+                        <div class="btn">View More</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view_wrap grid-view" style="display:none;">
+                <div class="view_item">
+                    <div class="vi_left">
+                        <img src="./resources/profile-pic.png" alt="profile">
+                    </div>
+                    <div class="vi_right">
+                        <p class="title">Person</p>
+                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
+                        <div class="btn">View More</div>
+                    </div>
+                </div>
+                <div class="view_item">
+                    <div class="vi_left">
+                        <img src="./resources/profile-pic.png" alt="profile">
+                    </div>
+                    <div class="vi_right">
+                        <p class="title">Person</p>
+                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
+                        <div class="btn">View More</div>
+                    </div>
+                </div>
+                <div class="view_item">
+                    <div class="vi_left">
+                        <img src="./resources/profile-pic.png" alt="profile">
+                    </div>
+                    <div class="vi_right">
+                        <p class="title">Person</p>
+                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
+                        <div class="btn">View More</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="./shared/scripts.js"></script>
+    <script>
+        listToGrid();
+    </script>
 </body>
 
 </html>

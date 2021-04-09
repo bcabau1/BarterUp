@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2021 at 03:19 AM
+-- Generation Time: Apr 09, 2021 at 02:18 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -53,7 +53,8 @@ CREATE TABLE `item` (
   `user_id` bigint(4) UNSIGNED NOT NULL,
   `category_id` bigint(5) UNSIGNED NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `item_condition` varchar(45) DEFAULT NULL
+  `item_condition` varchar(45) DEFAULT NULL,
+  `item_name` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -64,7 +65,7 @@ CREATE TABLE `item` (
 
 CREATE TABLE `movie` (
   `item_movie_id` smallint(5) UNSIGNED NOT NULL,
-  `movie_name` varchar(45) NOT NULL,
+  `director_name` varchar(45) NOT NULL,
   `movie_genre` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -77,7 +78,7 @@ CREATE TABLE `movie` (
 CREATE TABLE `music` (
   `artist_name` varchar(45) NOT NULL,
   `item_music_id` smallint(5) UNSIGNED NOT NULL,
-  `album_name` varchar(45) DEFAULT NULL
+  `music_genre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -137,7 +138,7 @@ INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
 CREATE TABLE `video_game` (
   `item_game_id` smallint(5) UNSIGNED NOT NULL,
   `game_platform` varchar(45) NOT NULL,
-  `game_name` varchar(45) DEFAULT NULL
+  `game_genre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

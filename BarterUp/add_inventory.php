@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', '1');
+error_reporting(E_ALL);
 session_start();
 
 include("config.php");
@@ -9,14 +11,19 @@ $user_data = check_login($con);
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	if (isset($_POST['movie_submit'])) {
+		$userid = $user_data['user_id'];
 		$movie_title = $_POST['title'];
 		$condition = $_POST['condition'];
 		$genre = $_POST['movie_genre'];
 		$director = $_POST['director'];
 		$description = $_POST['description'];
+		echo $userid;
+		echo $movie_title;
+		echo $condition;
 		if (!empty($movie_title) && !empty($condition)) {
-			#$query = "insert into movie (title) values ('$movie_title')";
-			#mysqli_query($con, $query);
+			$query = "insert into item (user_id, item_name, item_condition, description, category_id) 
+					values ('$userid', '$movie_title','$condition', '$description', 1001);";
+			mysqli_query($con, $query);
 			header("Location: add_inventory.php");
 			die;
 		} else {
@@ -29,8 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$condition = $_POST['condition'];
 		$description = $_POST['description'];
 		if (!empty($album) && !empty($artist) && !empty($condition)) {
-			#$query = "insert into user (username,password) values ('$username','$password')";
-			#mysqli_query($con, $query);
+			$query = "insert into item (user_id, item_name, item_condition, description, category_id) 
+					values ('$userid', '$album','$condition', '$description', 1001);";
+			mysqli_query($con, $query);
 			header("Location: add_inventory.php");
 			die;
 		} else {
@@ -43,8 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		$condition = $_POST['condition'];
 		$description = $_POST['description'];
 		if (!empty($platform) && !empty($condition)) {
-			#$query = "insert into user (username,password) values ('$username','$password')";
-			#mysqli_query($con, $query);
+			$query = "insert into item (user_id, item_name, item_condition, description, category_id) 
+					values ('$userid', '$game_title','$condition', '$description', 1001);";
+			mysqli_query($con, $query);
 			header("Location: add_inventory.php");
 			die;
 		} else {

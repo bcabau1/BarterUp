@@ -276,19 +276,22 @@ ALTER TABLE `video_game`
   ADD CONSTRAINT `item_game_id` FOREIGN KEY (`item_game_id`) REFERENCES `item` (`item_id`);
 COMMIT;
 
-CREATE TRIGGER update_seperate_cats 
-  AFTER INSERT 
-    ON item FOR EACH ROW
-      CASE 
-        WHEN NEW.category_id = 1000 THEN
-          INSERT INTO music VALUES ("n/a", NEW.item_id, "n/a")
-        
-        WHEN NEW.category_id = 1001 THEN
-          INSERT INTO movie VALUES (NEW.item_id, "n/a", "n/a")
-        
-        WHEN NEW.category_id = 1002 THEN
-          INSERT INTO video_game VALUES (NEW.item_id, "n/a", "n/a")
-      END;
+delimiter //
+CREATE TRIGGER update_seperate_cats AFTER INSERT ON item FOR EACH ROW
+  BEGIN
+    IF NEW.category_id = 1000 THEN
+        INSERT INTO music (item_music_id) VALUES (NEW.item_id);
+    ELSE IF NEW.category_id = 1001 THEN
+        INSERT INTO movie (item_movie_id) VALUES (NEW.item_id);
+    ELSE IF NEW.category_id = 1002 THEN
+        INSERT INTO video_game (item_game_id) VALUES (NEW.item_id);
+    END IF;
+    UPDATE category as C SET C.category_quantity = C.category_quantity + 1 
+    WHERE NEW.category_id = C.category_id;
+  END;
+delimiter ;
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

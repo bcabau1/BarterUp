@@ -30,14 +30,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			echo "Please enter some valid information!";
 		}
 	} elseif (isset($_POST['music_submit'])) {
-		$album = $_POST['album'];
+		$userid = $user_data['user_id'];
+		$album = $_POST['album_name'];
 		$artist = $_POST['artist'];
 		$genre = $_POST['music_genre'];
 		$condition = $_POST['condition'];
 		$description = $_POST['description'];
 		if (!empty($album) && !empty($artist) && !empty($condition)) {
 			$query = "insert into item (user_id, item_name, item_condition, description, category_id) 
-					values ('$userid', '$album','$condition', '$description', 1001);";
+					values ('$userid', '$album','$condition', '$description', 1000);";
 			mysqli_query($con, $query);
 			header("Location: add_inventory.php");
 			die;
@@ -46,13 +47,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		}
 	} elseif (isset($_POST['vg_submit'])) {
 		$platform = $_POST['platform'];
+		$userid = $user_data['user_id'];
 		$game_title = $_POST['game_title'];
 		$genre = $_POST['game_genre'];
 		$condition = $_POST['condition'];
 		$description = $_POST['description'];
 		if (!empty($platform) && !empty($condition)) {
 			$query = "insert into item (user_id, item_name, item_condition, description, category_id) 
-					values ('$userid', '$game_title','$condition', '$description', 1001);";
+					values ('$userid', '$game_title','$condition', '$description', 1002);";
 			mysqli_query($con, $query);
 			header("Location: add_inventory.php");
 			die;
@@ -136,8 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<option value="poor">Poor</option>
 					</select>
 					<br><label for="Category">Description</label><br>
-					<textarea id="description" name="description" rows="4" cols="50">
-                </textarea>
+					<input type="text" name="description" class="form-control"><br>
 					<input type="submit" name="movie_submit" class="btn btn-primary" value="Add">
 				</div>
 			</div>
@@ -158,8 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<option value="poor">Poor</option>
 					</select>
 					<br><label for="Category">Description</label><br>
-					<textarea id="description" name="description" rows="4" cols="50">
-                </textarea>
+					<input type="text" name="description" class="form-control"><br>
 					<input type="submit" name="music_submit" class="btn btn-primary" value="Add">
 				</div>
 			</div>
@@ -180,8 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						<option value="poor">Poor</option>
 					</select>
 					<br><label for="Category">Description</label><br>
-					<textarea id="description" name="description" rows="4" cols="50">
-                </textarea>
+					<input type="text" name="description" class="form-control"><br>
 					<input type="submit" name="vg_submit" class="btn btn-primary" value="Add">
 				</div>
 			</div>

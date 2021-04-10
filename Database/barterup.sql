@@ -3,11 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2021 at 02:18 AM
+-- Generation Time: Apr 11, 2021 at 12:14 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 CREATE DATABASE barterup;
 USE barterup;
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -39,9 +41,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `category_name`, `category_quantity`) VALUES
-(1000, 'music', 0),
-(1001, 'movies', 0),
-(1002, 'video_games', 0);
+(1000, 'music', 1),
+(1001, 'movies', 1),
+(1002, 'video_games', 1);
 
 -- --------------------------------------------------------
 
@@ -53,10 +55,30 @@ CREATE TABLE `item` (
   `item_id` smallint(5) UNSIGNED NOT NULL,
   `user_id` bigint(4) UNSIGNED NOT NULL,
   `category_id` bigint(5) UNSIGNED NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
+  `description` tinytext DEFAULT NULL,
   `item_condition` varchar(45) DEFAULT NULL,
   `item_name` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`item_id`, `user_id`, `category_id`, `description`, `item_condition`, `item_name`) VALUES
+(3000, 2, 1001, '                ', 'excellent', 'Titanic'),
+(3003, 2, 1000, '', 'excellent', 'gravity'),
+(3004, 2, 1002, 'new out of the box.', 'excellent', 'Mario');
+
+--
+-- Triggers `item`
+--
+DELIMITER $$
+CREATE TRIGGER `update_seperate_cats` AFTER INSERT ON `item` FOR EACH ROW BEGIN
+    UPDATE category as C SET C.category_quantity = C.category_quantity + 1 
+    WHERE NEW.category_id = C.category_id;
+  END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -220,7 +242,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3000;
+  MODIFY `item_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3005;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -275,22 +297,6 @@ ALTER TABLE `trade_history`
 ALTER TABLE `video_game`
   ADD CONSTRAINT `item_game_id` FOREIGN KEY (`item_game_id`) REFERENCES `item` (`item_id`);
 COMMIT;
-
-delimiter //
-CREATE TRIGGER update_seperate_cats AFTER INSERT ON item FOR EACH ROW
-  BEGIN
-    IF NEW.category_id = 1000 THEN
-        INSERT INTO music (item_music_id) VALUES (NEW.item_id);
-    ELSE IF NEW.category_id = 1001 THEN
-        INSERT INTO movie (item_movie_id) VALUES (NEW.item_id);
-    ELSE IF NEW.category_id = 1002 THEN
-        INSERT INTO video_game (item_game_id) VALUES (NEW.item_id);
-    END IF;
-    UPDATE category as C SET C.category_quantity = C.category_quantity + 1 
-    WHERE NEW.category_id = C.category_id;
-  END;
-delimiter ;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

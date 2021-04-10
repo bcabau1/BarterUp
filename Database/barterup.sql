@@ -6,7 +6,8 @@
 -- Generation Time: Apr 09, 2021 at 02:18 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
-
+CREATE DATABASE barterup;
+USE barterup;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -275,6 +276,19 @@ ALTER TABLE `video_game`
   ADD CONSTRAINT `item_game_id` FOREIGN KEY (`item_game_id`) REFERENCES `item` (`item_id`);
 COMMIT;
 
+CREATE TRIGGER update_seperate_cats 
+  AFTER INSERT 
+    ON item FOR EACH ROW
+      CASE 
+        WHEN NEW.category_id = 1000 THEN
+          INSERT INTO music VALUES ("n/a", NEW.item_id, "n/a")
+        
+        WHEN NEW.category_id = 1001 THEN
+          INSERT INTO movie VALUES (NEW.item_id, "n/a", "n/a")
+        
+        WHEN NEW.category_id = 1002 THEN
+          INSERT INTO video_game VALUES (NEW.item_id, "n/a", "n/a")
+      END;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

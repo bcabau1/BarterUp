@@ -15,13 +15,13 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <title>Trades</title>
     <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="inventory.css">
+    <link rel="stylesheet" href="currentTrades.css">
 </head>
 
 <body>
     <?php include("./header.php"); ?>
     <div class="page_name">
-        <h1>My Inventory</h1>
+        <h1>All Current Trades</h1>
     </div>
         <div class="links">
             <ul>

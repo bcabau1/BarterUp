@@ -24,7 +24,7 @@
 
     <a href='./inventory.php'>Inventory</a>
     <a href='./add_inventory.php'>Add to Inventory</a>
-    <a href="./current_trades.php">Home</a>  
+    <a href="./currentTrades.php">Home</a>  
     
   </div>
 </body>

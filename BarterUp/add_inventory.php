@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
-	<div class="container"><?php include("./shared/header.php"); ?></div>
+	<div class="container"><?php include("./header.php"); ?></div>
 	<div class="wrapper">
 		<div class="welcome">
 			Hello, <?php echo $user_data['username']; ?>

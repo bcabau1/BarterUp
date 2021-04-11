@@ -21,6 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$querya = "insert into item (user_id, item_name, item_condition, description, category_id) 
 					values ('$userid', '$movie_title','$condition', '$description', 1001);";
 			mysqli_query($con, $querya);
+			$last_id = $con->insert_id;
+			$querya1 = "insert into movie (item_movie_id, director_name, movie_genre) 
+						values ('$last_id','$director', '$genre');";
+			mysqli_query($con, $querya1);
 			header("Location: add_inventory.php");
 			die;
 		} else {
@@ -37,6 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$queryb = "insert into item (user_id, item_name, item_condition, description, category_id) 
 					values ('$userid', '$album', '$condition', '$description', 1000);";
 			mysqli_query($con, $queryb);
+			$last_id = $con->insert_id;
+			$queryb1 = "insert into music (artist_name, item_music_id, music_genre) 
+						values ('$artist','$last_id', '$genre');";
+			mysqli_query($con, $queryb1);
 			header("Location: add_inventory.php");
 			die;
 		} else {
@@ -53,6 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			$queryc = "insert into item (user_id, item_name, item_condition, description, category_id) 
 					values ('$userid', '$game_title','$condition', '$description', 1002);";
 			mysqli_query($con, $queryc);
+			$last_id = $con->insert_id;
+			$queryc1 = "insert into video_game (item_game_id, game_platform, game_genre) 
+						values ('$last_id','$platform', '$genre');";
+			mysqli_query($con, $queryc1);
 			header("Location: add_inventory.php");
 			die;
 		} else {

@@ -45,18 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-
-	<style type="text/css">
-		body {
-			font: 14px sans-serif;
-		}
-
-		.wrapper {
-			width: 350px;
-			padding: 20px;
-			margin: 0 auto;
-		}
-	</style>
+	<link rel="stylesheet" href="login.css">
 </head>
 
 <body>
@@ -80,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<input type="reset" class="btn btn-default" value="Reset">
 			</div>
 
-			<p>Don't have an account? <a href="./signup.php">Signup here</a>.</p>>
+			<p>Don't have an account? <a href="./signup.php">Signup here</a>.</p>
 		</form>
 	</div>
 </body>

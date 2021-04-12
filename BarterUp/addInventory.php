@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		});
 	</script>
  	<script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="addInventory.css">
+    <link rel="stylesheet" href="./addInventory.css?v=<?php echo time(); ?>">
 	<meta charset="UTF-8">
 	<title>Login</title>
 	

@@ -74,16 +74,18 @@ h1 {
     width: 75px;
 }
 
+.list-view {
+    align-items: center;
+    justify-content: center;
+}
+
 .list-view .view_item {
     border: 1px solid #e2efe1;
     margin: 10px;
     padding: 10px 20px;
-    display: flex;
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-}
-
-.list-view .view_item:last-child {
-    margin-bottom: 0;
 }
 
 .list-view .view_item .vi_left {
@@ -94,7 +96,7 @@ h1 {
     font-weight: 600;
 }
 
-.view_item .content {
+.view_item .item {
     margin: 5px 0;
     font-size: 14px;
     line-height: 22px;
@@ -114,25 +116,4 @@ h1 {
 
 .view_item .btn:hover {
     background: #3bd62b;
-}
-
-.grid-view {
-    width: 100%;
-}
-
-.grid-view .view_item {
-    width: 230px;
-    border: 1px solid #e2efe1;
-    padding: 25px;
-    text-align: center;
-    margin: 10px;
-    display: inline-block;
-}
-
-.grid-view .view_item .vi_left {
-    margin-bottom: 10px;
-}
-
-.grid-view .view_item .btn {
-    margin: 0 auto;
 }

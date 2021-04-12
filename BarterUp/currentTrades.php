@@ -15,7 +15,7 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <title>Trades</title>
     <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="currentTrades.css">
+    <link rel="stylesheet" href="./currentTrades.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -23,23 +23,17 @@ $user_data = check_login($con);
     <div class="page_name">
         <h1>All Current Trades</h1>
     </div>
-        <div class="links">
-            <ul>
-                <li class="li-list active" data-view="list-view"> <i class="fas fa-list"></i>List View </li>
-
-                <li class="li-list" data-view="grid-view"><i class="fas fa-th-large"></i> Grid View </li>
-            </ul>
-        </div>
-        <div class="wrapper">
+    <div class="wrapper">
         <div class="view_main">
-            <div class="view_wrap list-view" style="display:block;">
+            <div class="list-view">
                 <div class="view_item">
                     <div class="vi_left">
                         <img src="./resources/profile-pic.png" alt="profile">
                     </div>
                     <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
+                        <p class="title">Trader</p>
+                        <p class="title">Name: Person</p>
+                        <p class="item">Item: Item Name</p>
                         <div class="btn">View More</div>
                     </div>
                 </div>
@@ -48,51 +42,9 @@ $user_data = check_login($con);
                         <img src="./resources/profile-pic.png" alt="profile">
                     </div>
                     <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="view_wrap grid-view" style="display:none;">
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
+                        <p class="title">Tradee</p>
+                        <p class="title">Name: Person</p>
+                        <p class="item">Item: Item Name</p>
                         <div class="btn">View More</div>
                     </div>
                 </div>

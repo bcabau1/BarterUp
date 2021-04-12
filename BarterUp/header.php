@@ -23,7 +23,7 @@
     </div>
 
     <a href='./inventory.php'>Inventory</a>
-    <a href='./add_inventory.php'>Add to Inventory</a>
+    <a href='./addInventory.php'>Add to Inventory</a>
     <a href="./currentTrades.php">Home</a>  
     
   </div>

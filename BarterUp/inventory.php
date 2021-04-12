@@ -33,36 +33,25 @@ $user_data = check_login($con);
         <div class="wrapper">
         <div class="view_main">
             <div class="view_wrap list-view" style="display:block;">
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
+               <?php 
+                $query = "select * from item where user_id = '".$_SESSION['user_id']."'; ";
+                $result = mysqli_query($con, $query);
+                if ($result && mysqli_num_rows($result) > 0) {
+                     while($row= mysqli_fetch_assoc($result)) {
+                        echo 
+                        '<div class="view_item">
+                            <div class="vi_left">
+                                <img src="./resources/profile-pic.png" alt="profile">
+                            </div>
+                            <div class="vi_right">
+                                <p class="title">'.$row['item_name'].'</p>
+                                <p class="content">'.$row['description'].'</p>
+                            <div class="btn">View More</div>
+                        </div>
+                    </div>';
+                    }
+                }
+               ?>
             </div>
 
             <div class="view_wrap grid-view" style="display:none;">

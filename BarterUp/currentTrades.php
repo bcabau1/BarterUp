@@ -24,32 +24,35 @@ $user_data = check_login($con);
         <h1>All Current Trades</h1>
     </div>
     <div class="wrapper">
-        <div class="view_main">
-            <div class="list-view">
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Trader</p>
-                        <p class="title">Name: Person</p>
-                        <p class="item">Item: Item Name</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Tradee</p>
-                        <p class="title">Name: Person</p>
-                        <p class="item">Item: Item Name</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+        $query = "select x.*, y.* from 
+        (SELECT user.username as initiator, item.item_name as initiator_item
+        FROM trades, user, item
+        where user.user_id = trades.user_id_initiator
+        and item.item_id = trades.item_id_initiator) as x, 
+        (SELECT user.username as tradee, item.item_name as tradee_item
+        FROM trades, user, item
+        where user.user_id = trades.user_id_tradee
+        and item.item_id = trades.item_id_tradee) as y;";
+        $result = mysqli_query($con, $query);
+        if ($result && mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '
+            <ul class="list-view">
+                <li class="trader">
+                    <p class="title">Trade Initiator</p>
+                    <p class="initiator-name">Name: '.$row['initiator'].'</p>
+                    <p class="initiator-item">Item Name:'.$row['initiator_item'].'</p>
+                </li>
+
+                <li class="tradee">
+                    <p class="title">Tradee</p>
+                    <p class="tradee-name">Name: '.($row['tradee'] == null ? "None":$row['tradee']).'</p>
+                    <p class="tradee-item">Item Name: '.($row['tradee_item'] == null ? "None":$row['tradee_item']).'</p>
+                </li>
+            </ul>';
+            }
+        } ?>
     </div>
 
     <script src="./shared/scripts.js"></script>

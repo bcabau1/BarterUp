@@ -97,8 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <body><?php include("./header.php"); ?>
 	<div class="container">
-		<div class="wrapper">
+		<div class="page_name">
 			<h1>Add to Inventory</h1>
+		</div>
+		<div class="wrapper">
 			<form method="post">
 				<div class="cat-group">
 					<label for="category">Category</label><br>
@@ -112,11 +114,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 				<div id="movie" class="form-group">
 					<label for="Item">Movie Title</label><br>
-					<input type="text" name="title" class="form-control"><br>
+					<input type="text" name="title" class="form-control" placeholder="Title"><br>
 					<label for="Item">Movie Genre</label><br>
-					<input type="text" name="movie_genre" class="form-control"><br>
+					<input type="text" name="movie_genre" class="form-control"  placeholder="Horror, Drama, Action..."><br>
 					<label for="Item">Director Name</label><br>
-					<input type="text" name="director" class="form-control">
+					<input type="text" name="director" class="form-control"  placeholder="Somebody">
 					<div id="misc" class="misc-group">
 						<label for="Condition">Condition</label><br>
 						<select name="condition" id="condition">
@@ -126,18 +128,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 							<option value="poor">Poor</option>
 						</select>
 						<br><label for="Category">Description</label><br>
-						<input type="text" name="description1" class="form-control"><br>
+						<input type="text" name="description1" class="form-control"  placeholder="Once upon a time..."><br>
 						<input type="submit" name="movie_submit" class="btn btn-primary" value="Add">
 					</div>
 				</div>
 
 				<div id="music" class="form-group">
 					<label for="Item">Album Name</label><br>
-					<input type="text" name="album_name" class="form-control"><br>
+					<input type="text" name="album_name" class="form-control" placeholder="Vinyl"><br>
 					<label for="Item">Music Genre</label><br>
-					<input type="text" name="music_genre" class="form-control"><br>
+					<input type="text" name="music_genre" class="form-control" placeholder="Rap, Pop, Rock..."><br>
 					<label for="Item">Artist Name</label><br>
-					<input type="text" name="artist" class="form-control">
+					<input type="text" name="artist" class="form-control" placeholder="Somebody">
 					<div id="misc" class="misc-group">
 						<label for="Condition">Condition</label><br>
 						<select name="condition" id="condition">
@@ -147,18 +149,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 							<option value="poor">Poor</option>
 						</select>
 						<br><label for="Category">Description</label><br>
-						<input type="text" name="description2" class="form-control"><br>
+						<input type="text" name="description2" class="form-control" placeholder="Once upon a time..."><br>
 						<input type="submit" name="music_submit" class="btn btn-primary" value="Add">
 					</div>
 				</div>
 
 				<div id="videogame" class="form-group">
 					<label for="Item">Game Title</label><br>
-					<input type="text" name="game_title" class="form-control"><br>
+					<input type="text" name="game_title" class="form-control" placeholder="Title"><br>
 					<label for="Item">Game Platform</label><br>
-					<input type="text" name="platform" class="form-control"><br>
+					<input type="text" name="platform" class="form-control" placeholder="Gaming Console"><br>
 					<label for="Item">Game Genre</label><br>
-					<input type="text" name="game_genre" class="form-control">
+					<input type="text" name="game_genre" class="form-control" placeholder="Casual, Arcade, Action...">
 					<div id="misc" class="misc-group">
 						<label for="Condition">Condition</label><br>
 						<select name="condition" id="condition">
@@ -168,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 							<option value="poor">Poor</option>
 						</select>
 						<br><label for="Category">Description</label><br>
-						<input type="text" name="description3" class="form-control"><br>
+						<input type="text" name="description3" class="form-control"placeholder="Once upon a time..."><br>
 						<input type="submit" name="vg_submit" class="btn btn-primary" value="Add">
 					</div>
 				</div>

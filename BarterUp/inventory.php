@@ -15,7 +15,7 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <title>Trades</title>
     <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="inventory.css">
+    <link rel="stylesheet" href="./inventory.css?v=<?php echo time(); ?>">
 </head>
 
 <body>

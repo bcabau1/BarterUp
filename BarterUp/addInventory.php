@@ -97,10 +97,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <body><?php include("./header.php"); ?>
 	<div class="container">
+		
+		<div class="wrapper">
 		<div class="page_name">
 			<h1>Add to Inventory</h1>
 		</div>
-		<div class="wrapper">
 			<form method="post">
 				<div class="cat-group">
 					<label for="category">Category</label><br>

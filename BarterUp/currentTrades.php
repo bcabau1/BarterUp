@@ -29,6 +29,7 @@ $user_data = check_login($con);
         $result = mysqli_query($con, $query);
         if ($result && mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
+                if($row['user_id_initiator'] != $_SESSION['user_id']){
                 $query1 = "select user.user_id as initiatorId, user.username as initiator, item.item_name as initiator_item
                 FROM trades, user, item
                 where user.user_id =" . $row['user_id_initiator'] . "
@@ -62,21 +63,32 @@ $user_data = check_login($con);
                     echo '
                 <li class="tradee">
                     <p class="title">Trade an Item</p>
-                    <select>
+                    <form method="post" action="">
+                    <select name=selectItem>
                         <option value="" disabled selected>Select an Item</option>' .
                         $query3 = 'select * from item where user_id = ' . $_SESSION['user_id'] . ';';
                     $result3 = mysqli_query($con, $query3);
                     if ($result3 && mysqli_num_rows($result3) > 0) {
                         while ($row3 = mysqli_fetch_assoc($result3)) {
-                            echo '<option value="item">' . $row3['item_name'] . '</option>';
+                            echo '<option value='.$row3['item_id'].'>' . $row3['item_name'] . '</option>';
                         }
-                        echo '</select>';
-                        '
-                    </li>
+                        echo '</select>
+                        <button type="submit" name="submit" >Submit</button>
+ 
+                        </form>';
+                        if(isset($_POST["submit"])){
+                            $selectedItem=$_POST["selectItem"];
+                            print $selectedItem;
+                            $insertItem = "update trades set item_id_tradee =".$selectedItem." , user_id_tradee =".$_SESSION['user_id']." where trade_id =".$row['trade_id']."";
+                            mysqli_query($con, $insertItem);
+                            echo "<meta http-equiv='refresh' content='0'>";
+                        }
+                    '</li>
                 </ul>';
                     }
                 }
                 echo '<h1>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</h1>';
+            }
             }
         }
         ?>

@@ -20,18 +20,12 @@ $user_data = check_login($con);
 
 <body>
     <?php include("./header.php"); ?>
-    <div class="page_name">
-        <h1>My Inventory</h1>
-    </div>
-        <div class="links">
-            <ul>
-                <li class="li-list active" data-view="list-view"> <i class="fas fa-list"></i>List View </li>
-
-                <li class="li-list" data-view="grid-view"><i class="fas fa-th-large"></i> Grid View </li>
-            </ul>
-        </div>
+    
         <div class="wrapper">
         <div class="view_main">
+        <div class="page_name">
+        <h1>My Inventory</h1>
+        </div>
             <div class="view_wrap list-view" style="display:block;">
                <?php 
                 $query = "select * from item where user_id = '".$_SESSION['user_id']."'; ";
@@ -41,50 +35,21 @@ $user_data = check_login($con);
                         echo 
                         '<div class="view_item">
                             <div class="vi_left">
-                                <img src="./resources/profile-pic.png" alt="profile">
+                                <p class="title">'.$row['item_name'].'</p>
+                                <p class="content">ID:'.$row['item_id'].'</p>
+                            </div>
+                            <div class="vi_middle">
+                                <h5>Condition:</h5>
+                                <p class="content">'.$row['item_condition'].'</p>
                             </div>
                             <div class="vi_right">
-                                <p class="title">'.$row['item_name'].'</p>
+                                <h5>Description:</h5>
                                 <p class="content">'.$row['description'].'</p>
-                            <div class="btn">View More</div>
-                        </div>
-                    </div>';
+                            </div>
+                         </div>';
                     }
                 }
                ?>
-            </div>
-
-            <div class="view_wrap grid-view" style="display:none;">
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
-                <div class="view_item">
-                    <div class="vi_left">
-                        <img src="./resources/profile-pic.png" alt="profile">
-                    </div>
-                    <div class="vi_right">
-                        <p class="title">Person</p>
-                        <p class="content">Personjhkdffvh ikjuadfvkhjdffv kjasdfvdsafvdfvdkjb jkonlsdfafva</p>
-                        <div class="btn">View More</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

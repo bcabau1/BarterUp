@@ -92,8 +92,8 @@ h1 {
 }
 
 .list-view .view_item .vi_left {
-    width: 150px;
-    margin-right: 25px;
+    width: 100px;
+    margin-right: 45px;
 }
 
 .list-view .view_item .vi_middle {
@@ -102,7 +102,12 @@ h1 {
 }
 
 .list-view .view_item .vi_right {
-    width: 200px;
+    width: 100px;
+    margin-right:25px;
+}
+.list-view .view_item .vi_rightest {
+    width: 100px;
+    margin-right:25px;
 }
 
 .view_item .title {

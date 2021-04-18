@@ -44,8 +44,7 @@ $user_data = check_login($con);
                                 <p class="initiator-name"><b>Name:</b>' . $row1['initiator'] . '</p>
                                 <p class="initiator-item"><b>Item Name:</b>' . $row1['initiator_item'] . '</p>
                             </li>';
-                    }
-                    
+                    }                    
                     $query2 = "select user.user_id as tradeeId, user.username as tradee, item.item_name as tradee_item
                     FROM trades, user, item
                     where user.user_id =" . $row['user_id_tradee'] . "
@@ -56,8 +55,17 @@ $user_data = check_login($con);
                         echo '
                             <li class="tradee">
                                 <h3 class="title">Tradee</h3>
-                                <p class="tradee-name"><b>Name:</b>'.($row2['tradee'] == null ? "None":$row2['tradee']).'</p>
-                                <p class="tradee-item"><b>Item Name:</b>'.($row2['tradee_item'] == null ? "None":$row2['tradee_item']).'</p>
+                                <p class="tradee-name"><b>Name:</b>'.$row2['tradee'].'</p>
+                                <p class="tradee-item"><b>Item Name:</b>'.$row2['tradee_item'].'</p>
+                            </li>
+                        </ul>';
+                    }
+                    else{
+                        echo '
+                            <li class="tradee">
+                                <h3 class="title">Tradee</h3>
+                                <p class="tradee-name"><b>Name:</b> None </p>
+                                <p class="tradee-item"><b>Item Name:</b> None </p>
                             </li>
                         </ul>';
                     }

@@ -29,7 +29,7 @@ $user_data = check_login($con);
         $result = mysqli_query($con, $query);
         if ($result && mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if($row['user_id_initiator'] != $_SESSION['user_id']){
+                if($row['user_id_initiator'] != $_SESSION['user_id'] && $row['user_id_tradee'] != $_SESSION['user_id']){
                     $query1 = "select user.user_id as initiatorId, user.username as initiator, item.item_name as initiator_item
                     FROM trades, user, item
                     where user.user_id =" . $row['user_id_initiator'] . "
@@ -61,7 +61,7 @@ $user_data = check_login($con);
                     } else {
                     echo '
                         <li class="tradee">
-                            <h5 class="title">Trade an Item</h5>
+                            <h3 class="title">Trade an Item</h3>
                             <form method="post" action="">
                                 <select name=selectItem>
                                     <option value="" disabled selected>Select an Item</option>' .

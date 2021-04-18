@@ -34,8 +34,11 @@ $user_data = check_login($con);
                 $query = "select * from item where user_id = '".$_SESSION['user_id']."'; ";
                 $result = mysqli_query($con, $query);
 
+                
                 if ($result && mysqli_num_rows($result) > 0) {
                      while($row= mysqli_fetch_assoc($result)) {
+                        $query2 = "select * from trades where '".$row['item_id']."' = item_id_initiator or '".$row['item_id']."' = item_id_tradee";
+                        $result2 = mysqli_query($con, $query2);
                         echo 
                         '<div class="view_item">
                             <div class="vi_left">
@@ -49,10 +52,11 @@ $user_data = check_login($con);
                             <div class="vi_right">
                                 <h5>Description:</h5>
                                 <p class="content">'.$row['description'].'</p>
-                            </div>
+                            </div>'; 
+                            if(mysqli_num_rows($result2) == 0) { echo '
                             <div class="vi_rightmost">
                             <form method="post" action=""><input type="submit" name="trade_submit_'.$row['item_id'].'" class="btn btn-primary" value="Trade"></form>
-                            </div>
+                            </div>'; } echo '
                          </div> ';
 
                         if (isset($_POST['trade_submit_'.$row['item_id'].''])) {

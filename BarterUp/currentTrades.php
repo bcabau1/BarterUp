@@ -25,34 +25,69 @@ $user_data = check_login($con);
     </div>
     <div class="wrapper">
         <?php
-        $query = "select x.*, y.* from 
-        (SELECT user.username as initiator, item.item_name as initiator_item
-        FROM trades, user, item
-        where user.user_id = trades.user_id_initiator
-        and item.item_id = trades.item_id_initiator) as x, 
-        (SELECT user.username as tradee, item.item_name as tradee_item
-        FROM trades, user, item
-        where user.user_id = trades.user_id_tradee
-        and item.item_id = trades.item_id_tradee) as y;";
+        $query = "select * from trades";
         $result = mysqli_query($con, $query);
         if ($result && mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo '
-            <ul class="list-view">
-                <li class="trader">
-                    <p class="title">Trade Initiator</p>
-                    <p class="initiator-name">Name: '.$row['initiator'].'</p>
-                    <p class="initiator-item">Item Name:'.$row['initiator_item'].'</p>
-                </li>
+                if($row['user_id_initiator'] != $_SESSION['user_id']){
+                    $query1 = "select user.user_id as initiatorId, user.username as initiator, item.item_name as initiator_item
+                    FROM trades, user, item
+                    where user.user_id =" . $row['user_id_initiator'] . "
+                    and item.item_id = " . $row['item_id_initiator'] . "";
+                    $result1 = mysqli_query($con, $query1);
+                    $row1 = mysqli_fetch_assoc($result1);
+                    echo '
+                    <ul class="list-view">
+                        <li class="trader">
+                            <h3 class="title">Trade Initiator</h3>
+                            <p class="initiator-name"><b>Name:</b>' . $row1['initiator'] . '</p>
+                            <p class="initiator-item"><b>Item Name:</b>' . $row1['initiator_item'] . '</p>
+                        </li>';
 
-                <li class="tradee">
-                    <p class="title">Tradee</p>
-                    <p class="tradee-name">Name: '.($row['tradee'] == null ? "None":$row['tradee']).'</p>
-                    <p class="tradee-item">Item Name: '.($row['tradee_item'] == null ? "None":$row['tradee_item']).'</p>
-                </li>
-            </ul>';
+                    $query2 = "select user.user_id as tradeeId, user.username as tradee, item.item_name as tradee_item
+                    FROM trades, user, item
+                    where user.user_id =" . $row['user_id_tradee'] . "
+                    and item.item_id = " . $row['item_id_tradee'] . "";
+                    $result2 = mysqli_query($con, $query2);
+                    if ($result2 && mysqli_num_rows($result2) > 0) {
+                    $row2 = mysqli_fetch_assoc($result2);
+                    echo '
+                        <li class="tradee">
+                            <h3 class="title">Tradee</h3>
+                            <p class="tradee-name"><b>Name:</b> ' . $row2['tradee'] . '</p>
+                            <p class="tradee-item"><b>Item Name:</b>' . $row2['tradee_item'] . '</p>
+                        </li>
+                    </ul>';
+                    } else {
+                    echo '
+                        <li class="tradee">
+                            <h5 class="title">Trade an Item</h5>
+                            <form method="post" action="">
+                                <select name=selectItem>
+                                    <option value="" disabled selected>Select an Item</option>' .
+                                    $query3 = 'select * from item where user_id = ' . $_SESSION['user_id'] . ';';
+                                    $result3 = mysqli_query($con, $query3);
+                                    if ($result3 && mysqli_num_rows($result3) > 0) {
+                                        while ($row3 = mysqli_fetch_assoc($result3)) {
+                                            echo '<option value='.$row3['item_id'].'>' . $row3['item_name'] . '</option>';
+                                        }
+                                echo '</select>
+                                <button type="submit" name="submit" >Submit</button>
+                            </form>';
+                            if(isset($_POST["submit"])){
+                                $selectedItem=$_POST["selectItem"];
+                                $insertItem = "update trades set item_id_tradee =".$selectedItem." , user_id_tradee =".$_SESSION['user_id']." where trade_id =".$row['trade_id']."";
+                                mysqli_query($con, $insertItem);
+                                echo "<meta http-equiv='refresh' content='0'>";
+                            }
+                        '</li>
+                    </ul>';
+                        }
+                    }
+                }
             }
-        } ?>
+        }
+        ?>
     </div>
 
     <script src="./shared/scripts.js"></script>

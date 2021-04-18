@@ -18,6 +18,7 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="user-dropcontent">
+        <a href="./myTrades.php">My Trades</a>
         <a href="./tradeHistory.php">Trade History</a>
         <a href="./logout.php">Logout</a>
       </div>

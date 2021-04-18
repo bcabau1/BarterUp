@@ -9,24 +9,23 @@
     margin: 50px auto;
     
 }
-
+ 
 * {
     font-family: 'Montserrat', sans-serif;
     list-style: none;
     margin: 0;
-    padding: 0;
+    /*padding: 0;*/
     box-sizing: border-box;
-}
-
+} 
+ 
 body {
     background: #ebecf1;
     position: relative;
-    /*color: #b3b9b9;*/
 }
 
 h1 {
     text-align: center;
-}
+} 
 
 .page_name {
     width: 400px;

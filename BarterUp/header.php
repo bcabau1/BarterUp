@@ -7,15 +7,15 @@
 </head>
 
 <body>
+  
   <div class="header-right">
-
     <div class="header">
       <p>BarterUp</p>
     </div>
 
     <div class="user-drop">
       <button class="user-dropbtn"><?php echo $user_data['username']; ?>
-        <i class="fa fa-caret-down"></i>
+        <i class="fas fa-caret-down"></i>
       </button>
       <div class="user-dropcontent">
         <a href="./myTrades.php">My Trades</a>

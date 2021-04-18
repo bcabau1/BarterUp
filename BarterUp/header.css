@@ -35,7 +35,7 @@
 .header-right a:hover,
 .user-drop:hover .user-dropbtn {
     background-color: #ddd;
-    color: black;
+    color:rgb(20, 100, 150);
 }
 
 .header-right a.active {

@@ -4,7 +4,7 @@
 }
 
 .wrapper {
-    width: 600px;
+    width: 800px;
     margin-top: 50px;
     margin: 50px auto;
     
@@ -102,7 +102,12 @@ h1 {
 }
 
 .list-view .view_item .vi_right {
-    width: 200px;
+    width: 300px;
+}
+.list-view .view_item .vi_rightmost {
+    margin-left: 50px;
+    margin-top: 10px;
+    /*align-items: center;*/
 }
 
 .view_item .title {
@@ -117,8 +122,8 @@ h1 {
 }
 
 .view_item .btn {
-    width: 125px;
-    background: #4abd3e;
+    width: 75px;
+    background: #FF7F50;
     color: #fff;
     border-radius: 3px;
     padding: 8px 5px;
@@ -128,5 +133,5 @@ h1 {
 }
 
 .view_item .btn:hover {
-    background: #3bd62b;
+    background: #fa6c38;
 }

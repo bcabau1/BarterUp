@@ -15,13 +15,13 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <title>Trades</title>
     <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./currentTrades.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./myTrades.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
     <?php include("./header.php"); ?>
     <div class="page_name">
-        <h1>All Current Trades</h1>
+        <h1>My Trades</h1>
     </div>
     <div class="wrapper">
         <?php

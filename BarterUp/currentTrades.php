@@ -39,9 +39,9 @@ $user_data = check_login($con);
                     echo '
                     <ul class="list-view">
                         <li class="trader">
-                            <p class="title">Trade Initiator</p>
-                            <p class="initiator-name">Name: ' . $row1['initiator'] . '</p>
-                            <p class="initiator-item">Item Name:' . $row1['initiator_item'] . '</p>
+                            <h3 class="title">Trade Initiator</h3>
+                            <p class="initiator-name"><b>Name:</b>' . $row1['initiator'] . '</p>
+                            <p class="initiator-item"><b>Item Name:</b>' . $row1['initiator_item'] . '</p>
                         </li>';
 
                     $query2 = "select user.user_id as tradeeId, user.username as tradee, item.item_name as tradee_item
@@ -53,15 +53,15 @@ $user_data = check_login($con);
                     $row2 = mysqli_fetch_assoc($result2);
                     echo '
                         <li class="tradee">
-                            <p class="title">Tradee</p>
-                            <p class="tradee-name">Name: ' . $row2['tradee'] . '</p>
-                            <p class="tradee-item">Item Name: ' . $row2['tradee_item'] . '</p>
+                            <h3 class="title">Tradee</h3>
+                            <p class="tradee-name"><b>Name:</b> ' . $row2['tradee'] . '</p>
+                            <p class="tradee-item"><b>Item Name:</b>' . $row2['tradee_item'] . '</p>
                         </li>
                     </ul>';
                     } else {
                     echo '
                         <li class="tradee">
-                            <p class="title">Trade an Item</p>
+                            <h5 class="title">Trade an Item</h5>
                             <form method="post" action="">
                                 <select name=selectItem>
                                     <option value="" disabled selected>Select an Item</option>' .
@@ -84,7 +84,6 @@ $user_data = check_login($con);
                     </ul>';
                         }
                     }
-                echo '<h1>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</h1>';
                 }
             }
         }

@@ -56,8 +56,8 @@ h1 {
     border: 1px solid #ddd;
     padding: 8px;
 }
-/* 
-button {
+ 
+.button {
     width: 20%;
     line-height: 5px;
     background-color: #FF7F50;
@@ -67,7 +67,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-} */
+} 
 
 input[type=text],
 select {

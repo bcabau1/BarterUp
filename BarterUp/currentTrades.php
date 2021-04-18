@@ -74,7 +74,8 @@ $user_data = check_login($con);
                                 echo '<option value=' . $row3['item_id'] . '>' . $row3['item_name'] . '</option>';
                             }
                             echo '</select>
-                                    <button type="submit" name="submit" >Submit</button>
+                                    <div class = "button">                            
+                                        <button type="submit" name="submit" >Submit</button>
                                 </form>';
                             if (isset($_POST["submit"])) {
                                 $selectedItem = $_POST["selectItem"];

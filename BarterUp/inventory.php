@@ -6,6 +6,9 @@ include("functions.php");
 
 $user_data = check_login($con);
 
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +33,7 @@ $user_data = check_login($con);
                <?php 
                 $query = "select * from item where user_id = '".$_SESSION['user_id']."'; ";
                 $result = mysqli_query($con, $query);
+
                 if ($result && mysqli_num_rows($result) > 0) {
                      while($row= mysqli_fetch_assoc($result)) {
                         echo 
@@ -46,7 +50,18 @@ $user_data = check_login($con);
                                 <h5>Description:</h5>
                                 <p class="content">'.$row['description'].'</p>
                             </div>
-                         </div>';
+                            <div class="vi_rightmost">
+                            <form method="post" action=""><input type="submit" name="trade_submit_'.$row['item_id'].'" class="btn btn-primary" value="Trade"></form>
+                            </div>
+                         </div> ';
+
+                        if (isset($_POST['trade_submit_'.$row['item_id'].''])) {
+                            $query1 = "insert into trades (item_id_initiator, user_id_initiator) values ('".$row['item_id']."','".$_SESSION['user_id']."');";
+
+                            if(mysqli_query($con, $query1)) {
+                                echo "<meta http-equiv='refresh' content='0'>";
+                            } else echo 'error';
+                        }
                     }
                 }
                ?>

@@ -11,7 +11,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
+CREATE DATABASE barterup;
+use barterup;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -34,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `category_quantity` int DEFAULT NULL,
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `category_name_UNIQUE` (`category_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `category`
@@ -62,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `item` (
   PRIMARY KEY (`item_id`),
   KEY `category_id_idx` (`category_id`),
   KEY `user_id_idx` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3009 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `item`
@@ -101,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `director_name` varchar(45) NOT NULL,
   `movie_genre` varchar(45) NOT NULL,
   UNIQUE KEY `item_id_UNIQUE` (`item_movie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `movie`
@@ -123,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `music` (
   `item_music_id` smallint UNSIGNED NOT NULL,
   `music_genre` varchar(45) DEFAULT NULL,
   UNIQUE KEY `item_id_UNIQUE` (`item_music_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -144,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `trades` (
   KEY `item_id_tradee_idx` (`item_id_tradee`),
   KEY `user_id_initiator_idx` (`user_id_initiator`),
   KEY `user_id_tradee_idx` (`user_id_tradee`)
-) ENGINE=InnoDB AUTO_INCREMENT=4005 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4005 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `trades`
@@ -172,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `trade_history` (
   KEY `user_id_initiator_idx` (`user_history_id_initiator`),
   KEY `item_id_tradee_idx` (`item_history_id_tradee`),
   KEY `item_id_initiator_idx` (`item_history_id_initiator`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -187,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `user`
@@ -209,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `video_game` (
   `game_platform` varchar(45) NOT NULL,
   `game_genre` varchar(45) DEFAULT NULL,
   UNIQUE KEY `item_game_id_UNIQUE` (`item_game_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `video_game`

@@ -59,6 +59,30 @@ $user_data = check_login($con);
                                 <p class="tradee-item"><b>Item Name:</b>'.$row2['tradee_item'].'</p>
                             </li>
                         </ul>';
+                        if($row['user_id_initiator'] == $_SESSION['user_id'])    { 
+                        echo '
+                        <form method="post" action="">
+                            <input type="submit" name="trade_accept_'.$row['trade_id'].'" class="btn btn-primary" value="Accept">
+                            <input type="submit" name="trade_reject_'.$row['trade_id'].'" class="btn btn-primary" value="Reject">
+                        </form>';
+                        if (isset($_POST['trade_accept_'.$row['trade_id'].''])) {
+                            $query5 = "insert into trade_history (item_history_id_initiator, item_history_id_tradee, trade_id, user_history_id_initiator, user_history_id_tradee)
+                                         values (". $row['item_id_initiator'] .",". $row['item_id_tradee'] .",". $row['trade_id'] .",". $row['user_id_initiator'] .",". $row['user_id_tradee'] .");
+                                       update item set user_id = ". $row['user_id_tradee'] ." where item_id = ". $row['item_id_initiator'] .";
+                                       update item set user_id = ". $row['user_id_initiator'] ." where item_id = ". $row['item_id_tradee'] .";
+                                       delete from trades where trade_id = ". $row['trade_id'] ."";
+
+                            if(mysqli_multi_query($con, $query5)) {
+                                echo "<meta http-equiv='refresh' content='0'>";
+                            } else echo 'error';
+                        }
+                        else if (isset($_POST['trade_reject_'.$row['trade_id'].'']))    {
+                            $query6 = "update trades set item_id_tradee = null, user_id_tradee = null where trade_id = ". $row['trade_id'] ."; "; 
+                            if(mysqli_query($con, $query6)) {
+                                echo "<meta http-equiv='refresh' content='0'>";
+                            } else echo 'error';
+                        }
+                    }
                     }
                     else{
                         echo '

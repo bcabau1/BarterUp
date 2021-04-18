@@ -35,7 +35,7 @@ $user_data = check_login($con);
                     where user.user_id =" . $row['user_id_initiator'] . "
                     and item.item_id = " . $row['item_id_initiator'] . "";
                     $result1 = mysqli_query($con, $query1);
-                    if ($result2 && mysqli_num_rows($result2) > 0) {
+                    if ($result1 && mysqli_num_rows($result1) > 0) {
                         $row1 = mysqli_fetch_assoc($result1);
                         echo '
                     <ul class="list-view">
@@ -74,9 +74,9 @@ $user_data = check_login($con);
                                         }
                                     }
                             echo '</select>
-                                <button type="submit" name="submit" >Submit</button>
+                                <button type="submit" name="submit'.$row['trade_id'].'" >Submit</button>
                             </form>';
-                        if (isset($_POST["submit"])) {
+                        if (isset($_POST['submit'.$row['trade_id'].''])) {
                             $selectedItem = $_POST["selectItem"];
                             $insertItem = "update trades set item_id_tradee =" . $selectedItem . " , user_id_tradee =" . $_SESSION['user_id'] . " where trade_id =" . $row['trade_id'] . "";
                             mysqli_query($con, $insertItem);

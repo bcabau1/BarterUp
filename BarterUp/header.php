@@ -18,12 +18,11 @@
         <i class="fas fa-caret-down"></i>
       </button>
       <div class="user-dropcontent">
-        <a href="./myTrades.php">My Trades</a>
         <a href="./tradeHistory.php">Trade History</a>
         <a href="./logout.php">Logout</a>
       </div>
     </div>
-
+    <a href="./myTrades.php">My Trades</a>
     <a href='./inventory.php'>Inventory</a>
     <a href='./addInventory.php'>Add to Inventory</a>
     <a href="./currentTrades.php">Home</a>  

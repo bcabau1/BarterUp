@@ -23,7 +23,7 @@ $user_data = check_login($con);
 
     <div class="wrapper">
     <div class="page_name">
-        <h1>My Trades</h1>
+        <h1>My Pending Trades</h1>
     </div>
         <?php
         $query = "select * from trades";

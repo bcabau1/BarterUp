@@ -20,7 +20,7 @@ h1 {
     text-align: center;
     margin: 3% auto 3% auto;
     padding: 1%;
-    border-radius: 1%;
+    border-radius: 4px;
 }
 
 .page_name {

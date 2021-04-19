@@ -15,14 +15,17 @@ h1 {
 }
 
 .wrapper {
-    width: 100%;
+    background: white;
+    width: 60%;
     text-align: center;
-    margin: 3% auto;
+    margin: 3% auto 3% auto;
+    padding: 1%;
+    border-radius: 1%;
 }
 
 .page_name {
     width: 20%;
-    margin: 5px auto;
+    margin: 1% auto 0 auto;
     background: #fff;
     padding: 15px;
     border-radius: 2px;
@@ -31,9 +34,10 @@ h1 {
 
 .list-view {
     font-size: 20px;
-    border-collapse: collapse;
-    width: 100%;
-    margin: 2%;
+    width: 80%;
+    margin: 2% auto 2% auto;
+    border: 1px solid rgb(8, 8, 8);
+    border-radius: 5px;
 }
 
 .list-view li {
@@ -42,7 +46,7 @@ h1 {
 }
 
 .list-view .title {
-    background-color: grey;
+    background-color: rgb(17, 15, 15);
     color: white;
 }
 
@@ -52,16 +56,35 @@ h1 {
 
 .list-view .trader,
 .list-view .tradee {
-    border: 1px solid #ddd;
     padding: 8px;
 }
 
-button {
-    transition-duration: 0.4s;
+.accept-button {
+    width: 75px;
+    background: #FF7F50;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px 5px;
+    text-align: center;
+    font-weight: 200;
+    cursor: pointer;
 }
 
-button:hover {
-    background-color: #4CAF50;
-    /* Green */
-    color: white;
+.accept-button:hover {
+    background: #fa6c38;
+}
+
+.reject-button {
+    width: 75px;
+    background: #5079ff;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px 5px;
+    text-align: center;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+.reject-button:hover {
+    background: #3855fa;
 }

@@ -20,10 +20,11 @@ $user_data = check_login($con);
 
 <body>
     <?php include("./header.php"); ?>
+
+    <div class="wrapper">
     <div class="page_name">
         <h1>My Trades</h1>
     </div>
-    <div class="wrapper">
         <?php
         $query = "select * from trades";
         $result = mysqli_query($con, $query);
@@ -62,8 +63,8 @@ $user_data = check_login($con);
                         if($row['user_id_initiator'] == $_SESSION['user_id'])    { 
                         echo '
                         <form method="post" action="">
-                            <input type="submit" name="trade_accept_'.$row['trade_id'].'" class="btn btn-primary" value="Accept">
-                            <input type="submit" name="trade_reject_'.$row['trade_id'].'" class="btn btn-primary" value="Reject">
+                            <input class="accept-button" type="submit" name="trade_accept_'.$row['trade_id'].'" class="btn btn-primary" value="Accept">
+                            <input class="reject-button" type="submit" name="trade_reject_'.$row['trade_id'].'" class="btn btn-primary" value="Reject">
                         </form>';
                         if (isset($_POST['trade_accept_'.$row['trade_id'].''])) {
                             $query5 = "insert into trade_history (item_history_id_initiator, item_history_id_tradee, trade_id, user_history_id_initiator, user_history_id_tradee)

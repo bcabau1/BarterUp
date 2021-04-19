@@ -21,11 +21,10 @@ $user_data = check_login($con);
 <body>
     <?php include("./header.php"); ?>
 
+    <div class="wrapper">
     <div class="page_name">
         <h1>All Current Trades</h1>
     </div>
-    <div class="wrapper">
-
         <?php
         $query = "select * from trades";
         $result = mysqli_query($con, $query);

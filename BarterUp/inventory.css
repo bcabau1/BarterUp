@@ -6,7 +6,7 @@
 .wrapper {
     width: 800px;
     margin-top: 50px;
-    margin: 50px auto;
+    margin: 3% auto 3% auto;
     
 }
  
@@ -86,13 +86,14 @@ h1 {
     max-height:100px;
 }
 
+
 .list-view .view_item:last-child {
     margin-bottom: 0;
 }
 
 .list-view .view_item .vi_left {
     width: 150px;
-    margin-right: 25px;
+    margin-right: 50px;
 }
 
 .list-view .view_item .vi_middle {
@@ -101,7 +102,7 @@ h1 {
 }
 
 .list-view .view_item .vi_right {
-    width: 300px;
+    width: 200px;
 }
 .list-view .view_item .vi_rightmost {
     margin-left: 50px;
@@ -110,14 +111,13 @@ h1 {
 }
 
 .view_item .title {
+    font-size: 20px;
     font-weight: 600;
 }
 
 .view_item .content {
-    margin: 5px 0;
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 200;
+
+    font-size: 18px;
 }
 
 .view_item .btn {

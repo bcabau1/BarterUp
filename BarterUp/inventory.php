@@ -46,11 +46,11 @@ $user_data = check_login($con);
                                 <p class="content">ID:'.$row['item_id'].'</p>
                             </div>
                             <div class="vi_middle">
-                                <h5>Condition:</h5>
+                                <h3>Condition:</h3>
                                 <p class="content">'.$row['item_condition'].'</p>
                             </div>
                             <div class="vi_right">
-                                <h5>Description:</h5>
+                                <h3>Description:</h3>
                                 <p class="content">'.$row['description'].'</p>
                             </div>'; 
                             if(mysqli_num_rows($result2) == 0) { echo '

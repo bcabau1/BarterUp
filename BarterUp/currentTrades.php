@@ -20,10 +20,12 @@ $user_data = check_login($con);
 
 <body>
     <?php include("./header.php"); ?>
+
     <div class="page_name">
         <h1>All Current Trades</h1>
     </div>
     <div class="wrapper">
+
         <?php
         $query = "select * from trades";
         $result = mysqli_query($con, $query);
@@ -31,9 +33,9 @@ $user_data = check_login($con);
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($row['user_id_initiator'] != $_SESSION['user_id'] && $row['user_id_tradee'] != $_SESSION['user_id']) {
                     $query1 = "select user.user_id as initiatorId, user.username as initiator, item.item_name as initiator_item
-                    FROM trades, user, item
-                    where user.user_id =" . $row['user_id_initiator'] . "
-                    and item.item_id = " . $row['item_id_initiator'] . "";
+                        FROM trades, user, item
+                        where user.user_id =" . $row['user_id_initiator'] . "
+                        and item.item_id = " . $row['item_id_initiator'] . "";
                     $result1 = mysqli_query($con, $query1);
                     if ($result1 && mysqli_num_rows($result1) > 0) {
                         $row1 = mysqli_fetch_assoc($result1);
@@ -46,9 +48,9 @@ $user_data = check_login($con);
                         </li>';
                     }
                     $query2 = "select user.user_id as tradeeId, user.username as tradee, item.item_name as tradee_item
-                    FROM trades, user, item
-                    where user.user_id =" . $row['user_id_tradee'] . "
-                    and item.item_id = " . $row['item_id_tradee'] . "";
+                        FROM trades, user, item
+                        where user.user_id =" . $row['user_id_tradee'] . "
+                        and item.item_id = " . $row['item_id_tradee'] . "";
                     $result2 = mysqli_query($con, $query2);
                     if ($result2 && mysqli_num_rows($result2) > 0) {
                         $row2 = mysqli_fetch_assoc($result2);
@@ -74,7 +76,7 @@ $user_data = check_login($con);
                                         }
                                     }
                             echo '</select>
-                                <button type="submit" name="submit'.$row['trade_id'].'" >Submit</button>
+                                <button class= "submitButton" type="submit" name="submit'.$row['trade_id'].'" >Submit</button>
                             </form>';
                         if (isset($_POST['submit'.$row['trade_id'].''])) {
                             $selectedItem = $_POST["selectItem"];

@@ -2,7 +2,7 @@
     font-family: 'Montserrat', sans-serif;
     list-style: none;
     margin: 0;
-    /* padding: 0; */
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -24,7 +24,7 @@ h1 {
 }
 
 .page_name {
-    width: 20%;
+    width: 100%;
     margin: 1% auto 0 auto;
     background: #fff;
     padding: 15px;
@@ -34,19 +34,19 @@ h1 {
 
 .list-view {
     font-size: 20px;
-    width: 80%;
+    /*width: 80%;*/
     margin: 2% auto 2% auto;
-    border: 1px solid rgb(8, 8, 8);
+    border: 1px solid #e2efe1;
     border-radius: 5px;
 }
 
 .list-view li {
-    display: inline-block;
+    display: inline-table;
     width: 30%;
 }
 
 .list-view .title {
-    background-color: rgb(17, 15, 15);
+    background-color: #333;
     color: white;
 }
 
@@ -60,7 +60,7 @@ h1 {
 }
 
 .submitButton {
-    width: 20%;
+    width: 30%;
     line-height: 5px;
     background-color: #FF7F50;
     color: white;

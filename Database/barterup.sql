@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 17, 2021 at 11:18 PM
+-- Generation Time: Apr 21, 2021 at 12:22 AM
 -- Server version: 8.0.23
 -- PHP Version: 7.3.21
 
@@ -11,8 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE barterup;
-use barterup;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -35,16 +34,16 @@ CREATE TABLE IF NOT EXISTS `category` (
   `category_quantity` int DEFAULT NULL,
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `category_name_UNIQUE` (`category_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`category_id`, `category_name`, `category_quantity`) VALUES
-(1000, 'music', 1),
-(1001, 'movies', 3),
-(1002, 'video_games', 3);
+(1000, 'music', 3),
+(1001, 'movies', 4),
+(1002, 'video_games', 5);
 
 -- --------------------------------------------------------
 
@@ -63,24 +62,32 @@ CREATE TABLE IF NOT EXISTS `item` (
   PRIMARY KEY (`item_id`),
   KEY `category_id_idx` (`category_id`),
   KEY `user_id_idx` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3009 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3019 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `item`
 --
 
 INSERT INTO `item` (`item_id`, `user_id`, `category_id`, `description`, `item_condition`, `item_name`) VALUES
-(3000, 2, 1001, '                ', 'excellent', 'Titanic'),
+(3000, 1, 1001, '                ', 'excellent', 'Titanic'),
 (3003, 2, 1000, '', 'excellent', 'gravity'),
 (3004, 2, 1002, 'new out of the box.', 'excellent', 'Mario'),
-(3005, 1, 1001, 'Its badass', 'excellent', 'Unhinged'),
-(3006, 1, 1001, 'Its badass', 'excellent', 'Blade Runner'),
+(3006, 2, 1001, 'Its badass', 'excellent', 'Blade Runner'),
 (3007, 2, 1002, 'Best of the Best', 'excellent', 'Uncharted'),
-(3008, 2, 1002, 'Naruto is Console! Amazing!', 'excellent', 'UNS4');
+(3008, 2, 1002, 'Naruto is Console! Amazing!', 'excellent', 'UNS4'),
+(3009, 1, 1001, 'Badass Folks', 'excellent', 'Avengers'),
+(3010, 1, 1002, 'Burn Rubber', 'excellent', 'Burnout'),
+(3011, 1, 1000, 'Stuff', 'excellent', 'Barbish');
 
 --
 -- Triggers `item`
 --
+DROP TRIGGER IF EXISTS `Decrement`;
+DELIMITER $$
+CREATE TRIGGER `Decrement` AFTER DELETE ON `item` FOR EACH ROW UPDATE category as C SET C.category_quantity = C.category_quantity - 1 
+    WHERE OLD.category_id = C.category_id
+$$
+DELIMITER ;
 DROP TRIGGER IF EXISTS `update_seperate_cats`;
 DELIMITER $$
 CREATE TRIGGER `update_seperate_cats` AFTER INSERT ON `item` FOR EACH ROW BEGIN
@@ -102,14 +109,13 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `director_name` varchar(45) NOT NULL,
   `movie_genre` varchar(45) NOT NULL,
   UNIQUE KEY `item_id_UNIQUE` (`item_movie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `movie`
 --
 
 INSERT INTO `movie` (`item_movie_id`, `director_name`, `movie_genre`) VALUES
-(3005, 'MJ', 'Thriller'),
 (3006, 'BrIAN', 'Thriller');
 
 -- --------------------------------------------------------
@@ -124,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `music` (
   `item_music_id` smallint UNSIGNED NOT NULL,
   `music_genre` varchar(45) DEFAULT NULL,
   UNIQUE KEY `item_id_UNIQUE` (`item_music_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -145,15 +151,16 @@ CREATE TABLE IF NOT EXISTS `trades` (
   KEY `item_id_tradee_idx` (`item_id_tradee`),
   KEY `user_id_initiator_idx` (`user_id_initiator`),
   KEY `user_id_tradee_idx` (`user_id_tradee`)
-) ENGINE=InnoDB AUTO_INCREMENT=4005 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4008 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `trades`
 --
 
 INSERT INTO `trades` (`trade_id`, `item_id_initiator`, `item_id_tradee`, `user_id_initiator`, `user_id_tradee`) VALUES
-(4001, 3004, 3005, 2, 1),
-(4004, 3006, 3000, 1, 2);
+(4005, 3003, 3009, 2, 1),
+(4006, 3010, 3003, 1, 2),
+(4007, 3011, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -173,7 +180,14 @@ CREATE TABLE IF NOT EXISTS `trade_history` (
   KEY `user_id_initiator_idx` (`user_history_id_initiator`),
   KEY `item_id_tradee_idx` (`item_history_id_tradee`),
   KEY `item_id_initiator_idx` (`item_history_id_initiator`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `trade_history`
+--
+
+INSERT INTO `trade_history` (`trade_id`, `item_history_id_initiator`, `item_history_id_tradee`, `user_history_id_initiator`, `user_history_id_tradee`) VALUES
+(4004, 3006, 3000, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -188,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
@@ -210,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `video_game` (
   `game_platform` varchar(45) NOT NULL,
   `game_genre` varchar(45) DEFAULT NULL,
   UNIQUE KEY `item_game_id_UNIQUE` (`item_game_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `video_game`
@@ -218,7 +232,8 @@ CREATE TABLE IF NOT EXISTS `video_game` (
 
 INSERT INTO `video_game` (`item_game_id`, `game_platform`, `game_genre`) VALUES
 (3007, 'PS4', 'Action'),
-(3008, 'PS4', 'Fighting');
+(3008, 'PS4', 'Fighting'),
+(3010, 'PS3', 'Racing');
 
 --
 -- Constraints for dumped tables
@@ -235,13 +250,13 @@ ALTER TABLE `item`
 -- Constraints for table `movie`
 --
 ALTER TABLE `movie`
-  ADD CONSTRAINT `item_movie_id` FOREIGN KEY (`item_movie_id`) REFERENCES `item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `movie delete` FOREIGN KEY (`item_movie_id`) REFERENCES `item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `music`
 --
 ALTER TABLE `music`
-  ADD CONSTRAINT `item_music_id` FOREIGN KEY (`item_music_id`) REFERENCES `item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `music delete` FOREIGN KEY (`item_music_id`) REFERENCES `item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `trades`
@@ -265,7 +280,7 @@ ALTER TABLE `trade_history`
 -- Constraints for table `video_game`
 --
 ALTER TABLE `video_game`
-  ADD CONSTRAINT `item_game_id` FOREIGN KEY (`item_game_id`) REFERENCES `item` (`item_id`);
+  ADD CONSTRAINT `game delete` FOREIGN KEY (`item_game_id`) REFERENCES `item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

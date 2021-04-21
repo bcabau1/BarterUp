@@ -63,6 +63,7 @@ h1 {
     width: 75px;
     background: #FF7F50;
     color: #fff;
+    border: none;
     border-radius: 3px;
     padding: 8px 5px;
     text-align: center;
@@ -78,6 +79,7 @@ h1 {
     width: 75px;
     background: #5079ff;
     color: #fff;
+    border: none;
     border-radius: 3px;
     padding: 8px 5px;
     text-align: center;

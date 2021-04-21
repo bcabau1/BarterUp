@@ -89,8 +89,9 @@ h1 {
 }
 
 .list-view .view_item .vi_left {
-    width: 150px;
-    margin-right: 50px;
+    width: 300px;
+    max-width: 150px;
+    /*margin-right: 50px;*/
 }
 
 .list-view .view_item .vi_middle {
@@ -99,11 +100,19 @@ h1 {
 }
 
 .list-view .view_item .vi_right {
-    width: 200px;
+  
+    width: 250px;
 }
 
 .list-view .view_item .vi_rightmost {
-    margin-left: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    /*align-items: center;*/
+}
+
+
+.list-view .view_item .vi_rightmostmost {
+    margin-left: 10px;
     margin-top: 10px;
     /*align-items: center;*/
 }
@@ -120,6 +129,18 @@ h1 {
 .view_item .btn {
     width: 75px;
     background: #FF7F50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 5px;
+    text-align: center;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+.delete-button {
+    width: 75px;
+    background: #5079ff;
     color: #fff;
     border: none;
     border-radius: 3px;

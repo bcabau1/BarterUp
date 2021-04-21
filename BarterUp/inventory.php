@@ -56,6 +56,9 @@ $user_data = check_login($con);
                             if(mysqli_num_rows($result2) == 0) { echo '
                             <div class="vi_rightmost">
                             <form method="post" action=""><input type="submit" name="trade_submit_'.$row['item_id'].'" class="btn btn-primary" value="Trade"></form>
+                            </div>
+                            <div class="vi_rightmostmost">
+                            <form method="post" action=""><input type="submit" class="delete-button" name="trade_delete_'.$row['item_id'].'" class="btn btn-primary" value="Delete"></form>
                             </div>'; } echo '
                          </div> ';
 
@@ -63,6 +66,14 @@ $user_data = check_login($con);
                             $query1 = "insert into trades (item_id_initiator, user_id_initiator) values ('".$row['item_id']."','".$_SESSION['user_id']."');";
 
                             if(mysqli_query($con, $query1)) {
+                                echo "<meta http-equiv='refresh' content='0'>";
+                            } else echo 'error';
+                        }
+
+                        if (isset($_POST['trade_delete_'.$row['item_id'].''])) {
+                            $query6 = "delete from item where item_id = '" . $row['item_id']. "' and user_id = '".$_SESSION['user_id']."';";
+
+                            if(mysqli_query($con, $query6)) {
                                 echo "<meta http-equiv='refresh' content='0'>";
                             } else echo 'error';
                         }

@@ -28,8 +28,8 @@ input[type=submit]:hover {
     margin: 3% auto 3% auto;
     width: 600px;
     padding: 20px;
-    background: #fff;
-    border-radius: 3px;
+    background: rgb(243, 235, 235);
+    border-radius: 4px;
 }
 
 * {

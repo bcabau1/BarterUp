@@ -15,7 +15,7 @@ h1 {
 }
 
 .wrapper {
-    background: white;
+    background: rgb(243, 235, 235);
     width: 50%;
     text-align: center;
     margin: 3% auto 3% auto;
@@ -33,10 +33,10 @@ h1 {
 }
 
 .list-view {
+    width: 90%;
     font-size: 20px;
-    /*width: 80%;*/
     margin: 2% auto 2% auto;
-    border: 1px solid #e2efe1;
+    border: 1px solid black;
     border-radius: 5px;
 }
 
@@ -48,10 +48,6 @@ h1 {
 .list-view .title {
     background-color: #333;
     color: white;
-}
-
-.list-view:hover {
-    background-color: #ddd;
 }
 
 .list-view .trader,

@@ -6,6 +6,8 @@
 -- Generation Time: Apr 21, 2021 at 03:11 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
+CREATE DATABASE  IF NOT EXISTS `barterup` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `barterup`;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;

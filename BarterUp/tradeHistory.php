@@ -47,6 +47,19 @@ $user_data = check_login($con);
                                 <p class="initiator-name"><b>Name:</b>' . $row1['initiator'] . '</p>
                                 <p class="initiator-item"><b>Item Name:</b>' . $row1['initiator_item'] . '</p>
                             </li>';
+                        } else{
+                            $query4 = "select user.user_id as initiatorId, user.username as initiator
+                            FROM user, item
+                            where user.user_id =" . $row['user_history_id_initiator'] . "";
+                            $result4 = mysqli_query($con, $query4);
+                            $row4 = mysqli_fetch_assoc($result4);
+                            echo '
+                            <ul class="list-view">
+                            <li class="trader">
+                                <h3 class="title">Trade Initiator</h3>
+                                <p class="initiator-name"><b>Name:</b>' . $row4['initiator'] . '</p>
+                                <p class="initiator-item"><b>Item Name:</b> <em>Item Deleted</em></p>
+                            </li>';
                         }
                         $query2 = "select user.user_id as tradeeId, user.username as tradee, item.item_name as tradee_item
                         FROM trades, user, item

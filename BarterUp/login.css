@@ -3,12 +3,14 @@ body {
 }
 
 .wrapper {
+    background: rgb(243, 235, 235);
     width: 350px;
     padding: 20px;
-    margin: 0 auto;
+    margin: 5% auto;
 }
 
-input[type=text], select {
+input[type=text],
+select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -18,7 +20,8 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
-input[type=password], select {
+input[type=password],
+select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -30,7 +33,7 @@ input[type=password], select {
 
 input[type=submit] {
     width: 100%;
-    background-color:#FF7F50;
+    background-color: #FF7F50;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -41,7 +44,7 @@ input[type=submit] {
 
 input[type=reset] {
     width: 100%;
-    background-color:#818181;
+    background-color: #818181;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -51,9 +54,9 @@ input[type=reset] {
 }
 
 input[type=submit]:hover {
-    background-color:#f1784c;
-  }
+    background-color: #f1784c;
+}
 
 input[type=reset]:hover {
-    background-color:#797979;
+    background-color: #797979;
 }

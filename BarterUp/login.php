@@ -45,10 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="login.css">
+	<link rel="stylesheet" href="login.css?v=<?php echo time(); ?>">
 </head>
 
-<body>
+<body><?php include("./unauthHeader.php"); ?>
 	<div class="wrapper">
 		<h1>BarterUp</h1>
 		<h2>Login</h2>

@@ -22,7 +22,7 @@ h1 {
 .page_name {
     width: 100%;
     margin: 1% auto 0 auto;
-    background: #fff;
+    color: #fff;
     padding: 15px;
     border-radius: 5px;
     position: relative;
@@ -34,6 +34,8 @@ h1 {
     margin: 2% auto 2% auto;
     border: 1px solid white;
     border-radius: 5px;
+    background: white;
+    box-shadow: 0 8px 16px 0 rgba(241, 239, 239, 0.2);
 }
 
 .list-view li {
@@ -42,13 +44,13 @@ h1 {
 }
 
 .list-view .title {
-    background-color: white;
-    color: black;
+    background-color: #1d2c4d;
+    color: white;
 }
 
 .list-view .trader,
 .list-view .tradee {
-    color: white;
+    color: black;
     padding: 8px;
 }
 

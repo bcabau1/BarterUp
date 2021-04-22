@@ -6,16 +6,12 @@
     box-sizing: border-box;
 }
 
-body {
-    background: #ebecf1;
-}
-
 h1 {
     text-align: center;
 }
 
 .wrapper {
-    background: rgb(243, 235, 235);
+    background: #1d2c4d;
     width: 50%;
     text-align: center;
     margin: 3% auto 3% auto;
@@ -36,7 +32,7 @@ h1 {
     font-size: 20px;
     width: 80%;
     margin: 2% auto 2% auto;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 5px;
 }
 
@@ -46,8 +42,8 @@ h1 {
 }
 
 .list-view .title {
-    background-color: #333;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .list-view:hover {
@@ -56,6 +52,7 @@ h1 {
 
 .list-view .trader,
 .list-view .tradee {
+    color: white;
     padding: 8px;
 }
 

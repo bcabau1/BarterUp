@@ -28,7 +28,8 @@ input[type=submit]:hover {
     margin: 3% auto 3% auto;
     width: 600px;
     padding: 20px;
-    background: rgb(243, 235, 235);
+    background: #1d2c4d;
+    color: #fff;
     border-radius: 4px;
 }
 
@@ -53,6 +54,7 @@ h1 {
 .page_name {
     margin: 5px auto;
     background: #fff;
+    color: #000;
     padding: 15px;
     border-radius: 2px;
 }

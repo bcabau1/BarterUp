@@ -3,9 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2021 at 03:11 AM
+-- Generation Time: Apr 22, 2021 at 02:55 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
+create database barterup;
+use barterup;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,8 +40,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `category_name`, `category_quantity`) VALUES
-(1000, 'music', 3),
-(1001, 'movies', 3),
+(1000, 'music', 4),
+(1001, 'movies', 4),
 (1002, 'video_games', 5);
 
 -- --------------------------------------------------------
@@ -62,14 +64,16 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `user_id`, `category_id`, `description`, `item_condition`, `item_name`) VALUES
-(3003, 2, 1000, '', 'excellent', 'gravity'),
-(3004, 2, 1002, 'new out of the box.', 'excellent', 'Mario'),
-(3006, 2, 1001, 'Its badass', 'excellent', 'Blade Runner'),
-(3007, 2, 1002, 'Best of the Best', 'excellent', 'Uncharted'),
-(3008, 2, 1002, 'Naruto is Console! Amazing!', 'excellent', 'UNS4'),
-(3009, 1, 1001, 'Badass Folks', 'excellent', 'Avengers'),
-(3010, 1, 1002, 'Burn Rubber', 'excellent', 'Burnout'),
-(3011, 1, 1000, 'Stuff', 'excellent', 'Barbish');
+(3020, 1, 1001, 'dog ate it.', 'excellent', 'Titanic'),
+(3021, 1, 1002, 'Had it for years.', 'excellent', 'Mario'),
+(3022, 2, 1000, 'My favorite.', 'excellent', 'Gravity'),
+(3023, 2, 1001, 'Family Fun!', 'excellent', 'Frozen'),
+(3024, 3, 1002, 'Best fps.', 'excellent', 'Battlefield 4'),
+(3025, 3, 1000, 'Teenage love song.', 'excellent', 'Sorry'),
+(3026, 4, 1001, 'Chris Pratt is in this.', 'excellent', 'Jurassic World'),
+(3027, 4, 1002, 'Zagreus is cool.', 'excellent', 'Hades'),
+(3028, 5, 1000, 'Roy Rogers Mcfly can move!!!', 'excellent', 'El Perro'),
+(3029, 5, 1002, 'Its real old.', 'excellent', 'Oregon Trail');
 
 --
 -- Triggers `item`
@@ -104,7 +108,9 @@ CREATE TABLE `movie` (
 --
 
 INSERT INTO `movie` (`item_movie_id`, `director_name`, `movie_genre`) VALUES
-(3006, 'BrIAN', 'Thriller');
+(3020, 'James Cameron', 'Sad Drama'),
+(3023, 'Disney', 'Kids'),
+(3026, 'Colin Trevorrow', 'Action');
 
 -- --------------------------------------------------------
 
@@ -117,6 +123,15 @@ CREATE TABLE `music` (
   `item_music_id` smallint(5) UNSIGNED NOT NULL,
   `music_genre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `music`
+--
+
+INSERT INTO `music` (`artist_name`, `item_music_id`, `music_genre`) VALUES
+('Lecrae', 3022, 'Rap'),
+('Justin Bieber', 3025, 'Pop'),
+('Cilantro', 3028, 'American Dad');
 
 -- --------------------------------------------------------
 
@@ -137,9 +152,11 @@ CREATE TABLE `trades` (
 --
 
 INSERT INTO `trades` (`trade_id`, `item_id_initiator`, `item_id_tradee`, `user_id_initiator`, `user_id_tradee`) VALUES
-(4005, 3003, 3009, 2, 1),
-(4006, 3010, 3003, 1, 2),
-(4007, 3011, NULL, 1, NULL);
+(4011, 3020, NULL, 1, NULL),
+(4012, 3023, 3029, 2, 5),
+(4013, 3025, NULL, 3, NULL),
+(4014, 3027, NULL, 4, NULL),
+(4015, 3028, NULL, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -154,13 +171,6 @@ CREATE TABLE `trade_history` (
   `user_history_id_initiator` bigint(20) UNSIGNED NOT NULL,
   `user_history_id_tradee` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `trade_history`
---
-
-INSERT INTO `trade_history` (`trade_id`, `item_history_id_initiator`, `item_history_id_tradee`, `user_history_id_initiator`, `user_history_id_tradee`) VALUES
-(4004, 3006, 3000, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -180,7 +190,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
 (1, 'Farce4wrd', 'rubberducky'),
-(2, 'jrizzle1', 'abcd');
+(2, 'jrizzle1', 'abcd'),
+(3, 'razzle1', '1234'),
+(4, 'dazzle1', '1234'),
+(5, 'Roger', '1234');
 
 -- --------------------------------------------------------
 
@@ -199,9 +212,10 @@ CREATE TABLE `video_game` (
 --
 
 INSERT INTO `video_game` (`item_game_id`, `game_platform`, `game_genre`) VALUES
-(3007, 'PS4', 'Action'),
-(3008, 'PS4', 'Fighting'),
-(3010, 'PS3', 'Racing');
+(3021, 'Nintendo', 'Casual'),
+(3024, 'PlayStation 4', 'Action'),
+(3027, 'PC', 'Arcade'),
+(3029, 'PC', 'Educational');
 
 --
 -- Indexes for dumped tables
@@ -282,19 +296,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3019;
+  MODIFY `item_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3030;
 
 --
 -- AUTO_INCREMENT for table `trades`
 --
 ALTER TABLE `trades`
-  MODIFY `trade_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4008;
+  MODIFY `trade_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4016;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

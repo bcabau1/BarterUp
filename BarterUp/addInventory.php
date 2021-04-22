@@ -76,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script async>
@@ -88,97 +89,93 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			})
 		});
 	</script>
- 	<script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./addInventory.css?v=<?php echo time(); ?>">
+	<script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="./addInventory.css?v=<?php echo time(); ?>">
 	<meta charset="UTF-8">
 	<title>Login</title>
-	
+
 </head>
 
-<body><?php include("./header.php"); ?>
-	<div class="container">
-		
-		<div class="wrapper">
+<body>
+	<?php include("./header.php"); ?>
+	<div class="wrapper">
 		<div class="page_name">
 			<h1>Add to Inventory</h1>
 		</div>
-			<form method="post">
-				<div class="cat-group">
-					<label for="category">Category</label><br>
-					<select name="category" id="cases">
-						<option> Choose Category </option>
-						<option value="movie">Movie</option>
-						<option value="music">Music</option>
-						<option value="videogame">Video Game</option>
+		<form method="post">
+			<div class="cat-group">
+				<label for="category">Category</label><br>
+				<select name="category" id="cases">
+					<option> Choose Category </option>
+					<option value="movie">Movie</option>
+					<option value="music">Music</option>
+					<option value="videogame">Video Game</option>
+				</select>
+			</div>
+
+			<div id="movie" class="form-group">
+				<label for="Item">Movie Title</label><br>
+				<input type="text" name="title" class="form-control" placeholder="Title"><br>
+				<label for="Item">Movie Genre</label><br>
+				<input type="text" name="movie_genre" class="form-control" placeholder="Horror, Drama, Action..."><br>
+				<label for="Item">Director Name</label><br>
+				<input type="text" name="director" class="form-control" placeholder="Somebody">
+				<div id="misc" class="misc-group">
+					<label for="Condition">Condition</label><br>
+					<select name="condition" id="condition">
+						<option value="excellent">Excellent</option>
+						<option value="very nice">Very Nice</option>
+						<option value="average">Average</option>
+						<option value="poor">Poor</option>
 					</select>
+					<br><label for="Category">Description</label><br>
+					<input type="text" name="description1" class="form-control" placeholder="Once upon a time..."><br>
+					<input type="submit" name="movie_submit" class="btn btn-primary" value="Add">
 				</div>
+			</div>
 
-				<div id="movie" class="form-group">
-					<label for="Item">Movie Title</label><br>
-					<input type="text" name="title" class="form-control" placeholder="Title"><br>
-					<label for="Item">Movie Genre</label><br>
-					<input type="text" name="movie_genre" class="form-control"  placeholder="Horror, Drama, Action..."><br>
-					<label for="Item">Director Name</label><br>
-					<input type="text" name="director" class="form-control"  placeholder="Somebody">
-					<div id="misc" class="misc-group">
-						<label for="Condition">Condition</label><br>
-						<select name="condition" id="condition">
-							<option value="excellent">Excellent</option>
-							<option value="very nice">Very Nice</option>
-							<option value="average">Average</option>
-							<option value="poor">Poor</option>
-						</select>
-						<br><label for="Category">Description</label><br>
-						<input type="text" name="description1" class="form-control"  placeholder="Once upon a time..."><br>
-						<input type="submit" name="movie_submit" class="btn btn-primary" value="Add">
-					</div>
+			<div id="music" class="form-group">
+				<label for="Item">Album Name</label><br>
+				<input type="text" name="album_name" class="form-control" placeholder="Vinyl"><br>
+				<label for="Item">Music Genre</label><br>
+				<input type="text" name="music_genre" class="form-control" placeholder="Rap, Pop, Rock..."><br>
+				<label for="Item">Artist Name</label><br>
+				<input type="text" name="artist" class="form-control" placeholder="Somebody">
+				<div id="misc" class="misc-group">
+					<label for="Condition">Condition</label><br>
+					<select name="condition" id="condition">
+						<option value="excellent">Excellent</option>
+						<option value="very nice">Very Nice</option>
+						<option value="average">Average</option>
+						<option value="poor">Poor</option>
+					</select>
+					<br><label for="Category">Description</label><br>
+					<input type="text" name="description2" class="form-control" placeholder="Once upon a time..."><br>
+					<input type="submit" name="music_submit" class="btn btn-primary" value="Add">
 				</div>
+			</div>
 
-				<div id="music" class="form-group">
-					<label for="Item">Album Name</label><br>
-					<input type="text" name="album_name" class="form-control" placeholder="Vinyl"><br>
-					<label for="Item">Music Genre</label><br>
-					<input type="text" name="music_genre" class="form-control" placeholder="Rap, Pop, Rock..."><br>
-					<label for="Item">Artist Name</label><br>
-					<input type="text" name="artist" class="form-control" placeholder="Somebody">
-					<div id="misc" class="misc-group">
-						<label for="Condition">Condition</label><br>
-						<select name="condition" id="condition">
-							<option value="excellent">Excellent</option>
-							<option value="very nice">Very Nice</option>
-							<option value="average">Average</option>
-							<option value="poor">Poor</option>
-						</select>
-						<br><label for="Category">Description</label><br>
-						<input type="text" name="description2" class="form-control" placeholder="Once upon a time..."><br>
-						<input type="submit" name="music_submit" class="btn btn-primary" value="Add">
-					</div>
+			<div id="videogame" class="form-group">
+				<label for="Item">Game Title</label><br>
+				<input type="text" name="game_title" class="form-control" placeholder="Title"><br>
+				<label for="Item">Game Platform</label><br>
+				<input type="text" name="platform" class="form-control" placeholder="Gaming Console"><br>
+				<label for="Item">Game Genre</label><br>
+				<input type="text" name="game_genre" class="form-control" placeholder="Casual, Arcade, Action...">
+				<div id="misc" class="misc-group">
+					<label for="Condition">Condition</label><br>
+					<select name="condition" id="condition">
+						<option value="excellent">Excellent</option>
+						<option value="very nice">Very Nice</option>
+						<option value="average">Average</option>
+						<option value="poor">Poor</option>
+					</select>
+					<br><label for="Category">Description</label><br>
+					<input type="text" name="description3" class="form-control" placeholder="Once upon a time..."><br>
+					<input type="submit" name="vg_submit" class="btn btn-primary" value="Add">
 				</div>
-
-				<div id="videogame" class="form-group">
-					<label for="Item">Game Title</label><br>
-					<input type="text" name="game_title" class="form-control" placeholder="Title"><br>
-					<label for="Item">Game Platform</label><br>
-					<input type="text" name="platform" class="form-control" placeholder="Gaming Console"><br>
-					<label for="Item">Game Genre</label><br>
-					<input type="text" name="game_genre" class="form-control" placeholder="Casual, Arcade, Action...">
-					<div id="misc" class="misc-group">
-						<label for="Condition">Condition</label><br>
-						<select name="condition" id="condition">
-							<option value="excellent">Excellent</option>
-							<option value="very nice">Very Nice</option>
-							<option value="average">Average</option>
-							<option value="poor">Poor</option>
-						</select>
-						<br><label for="Category">Description</label><br>
-						<input type="text" name="description3" class="form-control"placeholder="Once upon a time..."><br>
-						<input type="submit" name="vg_submit" class="btn btn-primary" value="Add">
-					</div>
-				</div>
-
-			</form>
-
-		</div>
+			</div>
+		</form>
 	</div>
 </body>
 

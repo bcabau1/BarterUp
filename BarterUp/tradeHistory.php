@@ -13,7 +13,7 @@ $user_data = check_login($con);
 
 <head>
     <meta charset="UTF-8">
-    <title>Trades</title>
+    <title>BarterUp</title>
     <script src="https://kit.fontawesome.com/3aa4932d1b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./tradeHistory.css?v=<?php echo time(); ?>">
 </head>

@@ -50,8 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <body><?php include("./unauthHeader.php"); ?>
 	<div class="wrapper">
-		<h1>BarterUp</h1>
-		<h2>Login</h2>
+		<h1>Login</h1>
 
 		<form method="post">
 			<div class="form-group">

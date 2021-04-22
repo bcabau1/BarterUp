@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <head>
 	<meta charset="UTF-8">
-	<title>SignUp</title>
+	<title>Sign Up</title>
 	<link rel="stylesheet" href="signup.css?v=<?php echo time(); ?>">
 	
 </head>

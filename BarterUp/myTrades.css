@@ -36,7 +36,7 @@ h1 {
     font-size: 20px;
     width: 80%;
     margin: 2% auto 2% auto;
-    border: 1px solid #1d2c4d;
+    border: 1px solid black;
     border-radius: 5px;
 }
 
@@ -77,7 +77,7 @@ h1 {
 
 .reject-button {
     width: 75px;
-    background: #5079ff;
+    background: #32416f;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -88,5 +88,5 @@ h1 {
 }
 
 .reject-button:hover {
-    background: #3855fa;
+    background: #212b49;
 }

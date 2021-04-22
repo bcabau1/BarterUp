@@ -70,7 +70,7 @@ h1 {
 }
 
 .list-view .view_item {
-    border: 1px solid #1d2c4d;
+    border: 1px solid black;
     margin: 10px;
     padding: 10px 20px;
     display: flex;
@@ -134,7 +134,7 @@ h1 {
 
 .delete-button {
     width: 75px;
-    background: #5079ff;
+    background: #32416f;
     color: #fff;
     border: none;
     border-radius: 3px;

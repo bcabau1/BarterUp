@@ -6,16 +6,12 @@
     box-sizing: border-box;
 }
 
-body {
-    background: #ebecf1;
-}
-
 h1 {
     text-align: center;
 }
 
 .wrapper {
-    background: rgb(243, 235, 235);
+    background: #1d2c4d;
     width: 50%;
     text-align: center;
     margin: 3% auto 3% auto;
@@ -26,17 +22,20 @@ h1 {
 .page_name {
     width: 100%;
     margin: 1% auto 0 auto;
-    background: #fff;
+    color: #fff;
     padding: 15px;
     border-radius: 2px;
     position: relative;
 }
 
 .list-view {
+    color: black;
+    background: white;
     width: 80%;
     font-size: 20px;
     margin: 2% auto 2% auto;
-    border: 1px solid black;
+    border: 1px solid white;
+    box-shadow: 0 8px 16px 0 rgba(255, 253, 253, 0.2);
     border-radius: 5px;
 }
 
@@ -46,8 +45,18 @@ h1 {
 }
 
 .list-view .title {
-    background-color: #333;
+    background-color: #1d2c4d;
     color: white;
+}
+
+.initiator-name,
+.initiator-item {
+    color: black;
+}
+
+.tradee-name,
+.tradee-item {
+    color: black;
 }
 
 .list-view .trader,

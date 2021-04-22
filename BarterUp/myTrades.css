@@ -36,7 +36,7 @@ h1 {
     font-size: 20px;
     width: 80%;
     margin: 2% auto 2% auto;
-    border: 1px solid #e2efe1;
+    border: 1px solid #1d2c4d;
     border-radius: 5px;
 }
 
@@ -46,7 +46,7 @@ h1 {
 }
 
 .list-view .title {
-    background-color: #333;
+    background-color: #1d2c4d;
     color: white;
 }
 

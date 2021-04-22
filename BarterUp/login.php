@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="login.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" href="./login.css?v=<?php echo time(); ?>">
 </head>
 
 <body><?php include("./unauthHeader.php"); ?>
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<input type="reset" class="btn btn-default" value="Reset">
 			</div>
 
-			<p>Don't have an account? <a href="./signup.php">Signup here</a>.</p>
+			<p>Don't have an account? <a class="signupLink" href="./signup.php">Signup here</a>.</p>
 		</form>
 	</div>
 </body>
